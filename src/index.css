@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;1,500&family=Open+Sans:wght@300;500&family=Work+Sans:wght@300&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: hotpink;
+  font-family: 'Work Sans', sans-serif;
+  font-size: 18px;
+}
+
+.main {
+  width: 1400px;
+  margin: 30px auto;
+}
