@@ -11,6 +11,7 @@ const {task} = props;
         <h3><em>{task.description}</em></h3>
         
         <button onClick={() => props.onClickDelete(task.id)}>Delete task</button>
+        <button onClick={() => props.onClickEdit()}>Edit task</button>
     </React.Fragment>
   )
 }
@@ -18,5 +19,6 @@ const {task} = props;
 Task.propTypes = {
     onTaskClick: PropTypes.func,
     task: PropTypes.object,
-    onClickDelete: PropTypes.func
+    onClickDelete: PropTypes.func,
+    onClickEdit: PropTypes.func
 }

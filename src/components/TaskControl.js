@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import TaskList from './TaskList';
 import Task from './Task';
 import NewTaskForm from './NewTaskForm';
+import EditTaskForm from './EditTaskForm';
 
 export class TaskControl extends Component {
  
@@ -27,8 +28,25 @@ export class TaskControl extends Component {
         ],
         selectedTask: null,
         showTask: false,
-        showForm: false
+        showForm: false,
+        editing: false
     }
+ }
+
+ handleEditTaskInList = (taskToEdit) => {
+  const newTaskList = this.state.mainTaskList.filter(task => task.id !== this.state.selectedTask.id)
+                      .concat(taskToEdit);
+  this.setState({
+    mainTaskList: newTaskList,
+    selectedTask: null,
+    editing: false
+  });
+ }
+
+ handleEditClick = () => {
+  this.setState({
+   editing:true
+  });
  }
 
  handleChangeSelectedTask = (id) => {
@@ -42,7 +60,8 @@ export class TaskControl extends Component {
     if (this.state.selectedTask != null) {
         this.setState({
             showForm: false,
-            selectedTask:null
+            selectedTask:null,
+            editing:false
         })
     }
     else {
@@ -70,8 +89,12 @@ handleDeleteTask = (id) => {
   render() {
     let currentlyVisible = null;
     let buttonText = null;
-    if (this.state.selectedTask != null) {
-      currentlyVisible = <Task task={this.state.selectedTask} onClickDelete={this.handleDeleteTask}/>
+    if (this.state.editing) {
+     currentlyVisible = <EditTaskForm task = {this.state.selectedTask} onEditTask={this.handleEditTaskInList}/>
+     buttonText='Back to tasks';
+    }
+    else if (this.state.selectedTask != null) {
+      currentlyVisible = <Task task={this.state.selectedTask} onClickDelete={this.handleDeleteTask} onClickEdit={this.handleEditClick}/>
       buttonText='Back to tasks';
     }
     else if (this.state.showForm) {
