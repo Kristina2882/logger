@@ -3,6 +3,7 @@ import TaskList from './TaskList';
 import Task from './Task';
 import NewTaskForm from './NewTaskForm';
 import EditTaskForm from './EditTaskForm';
+import LogForm from './LogForm';
 
 export class TaskControl extends Component {
  
@@ -29,8 +30,15 @@ export class TaskControl extends Component {
         selectedTask: null,
         showTask: false,
         showForm: false,
-        editing: false
+        editing: false,
+        logging: false
     }
+ }
+
+ handleLogClick = () => {
+  this.setState({
+    logging: true
+  });
  }
 
  handleEditTaskInList = (taskToEdit) => {
@@ -61,7 +69,8 @@ export class TaskControl extends Component {
         this.setState({
             showForm: false,
             selectedTask:null,
-            editing:false
+            editing:false,
+            logging: false
         })
     }
     else {
@@ -89,12 +98,16 @@ handleDeleteTask = (id) => {
   render() {
     let currentlyVisible = null;
     let buttonText = null;
-    if (this.state.editing) {
+    if (this.state.logging) {
+    currentlyVisible= <LogForm task={this.state.selectedTask}/>
+    buttonText='Back to tasks';
+    }
+    else if (this.state.editing) {
      currentlyVisible = <EditTaskForm task = {this.state.selectedTask} onEditTask={this.handleEditTaskInList}/>
      buttonText='Back to tasks';
     }
     else if (this.state.selectedTask != null) {
-      currentlyVisible = <Task task={this.state.selectedTask} onClickDelete={this.handleDeleteTask} onClickEdit={this.handleEditClick}/>
+      currentlyVisible = <Task task={this.state.selectedTask} onClickDelete={this.handleDeleteTask} onClickEdit={this.handleEditClick} onClickLog={this.handleLogClick}/>
       buttonText='Back to tasks';
     }
     else if (this.state.showForm) {

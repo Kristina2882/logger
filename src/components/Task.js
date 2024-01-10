@@ -12,6 +12,7 @@ const {task} = props;
         
         <button className='delete-btn' onClick={() => props.onClickDelete(task.id)}>Delete task</button>
         <button className='edit-btn' onClick={() => props.onClickEdit()}>Edit task</button>
+        <button className='add-log-btn' onClick={() => props.onClickLog()}>Log</button>
         </div>
     </React.Fragment>
   )
@@ -21,5 +22,6 @@ Task.propTypes = {
     onTaskClick: PropTypes.func,
     task: PropTypes.object,
     onClickDelete: PropTypes.func,
-    onClickEdit: PropTypes.func
+    onClickEdit: PropTypes.func,
+    onClickLog: PropTypes.func
 }

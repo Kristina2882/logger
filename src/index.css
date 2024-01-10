@@ -39,9 +39,14 @@ body {
 }
 
 .main-btn,
-.form-btn {
+.form-btn,
+.edit-btn,
+.delete-btn,
+.add-log-btn,
+.log-btn
+ {
   display: block;
-  background: rgb(248, 131, 190);
+  background: rgb(251, 120, 185);
   border: 0;
   padding: 10px;
   border-radius: 9px;
@@ -50,23 +55,57 @@ body {
   transition: background transform 500ms ease;
 }
 
+.edit-btn,
+.delete-btn,
+.add-log-btn,
+.log-btn {
+  display: inline;
+  margin-right: 15px;
+  font-size: 16px;
+  padding: 8px;
+}
+
+.delete-btn {
+  background: rgb(255, 13, 49);
+  color: antiquewhite;
+}
+
 .main-btn:hover,
-.form-btn:hover {
+.form-btn:hover,
+.edit-btn:hover,
+.delete-btn:hover,
+.add-log-btn:hover,
+.log-btn:hover  {
   transform: scale(1.1);
   background: rgb(255, 22, 138);
+  color: antiquewhite;
 }
 
 .reusable-form,
-.reusable-form input
+.log-form
+.reusable-form input,
+.log-form input
  {
   display: block;
 }
 
-.reusable-form input {
+.reusable-form input,
+.log-form input {
   margin-bottom: 10px;
   border-radius: 9px;
   padding: 10px;
   font-size: 18px;
   width: 1400px;
   border-style: none;
+  font-size: 18px;
+}
+
+.task h2 {
+ margin-bottom: 10px;
+ font-size: 24px;
+}
+.task h3 {
+  margin: 10px;
+  font-size: 20px;
+  margin-bottom: 15px;
 }
