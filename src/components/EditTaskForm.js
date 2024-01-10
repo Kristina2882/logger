@@ -18,7 +18,7 @@ export default function EditTaskForm(props) {
     return (
         <React.Fragment>
             <ReusableForm
-            buttonText='Edit task'
+            buttonText='Save changes'
             handleFormSubmission={handleEditTask}
             />
         </React.Fragment>

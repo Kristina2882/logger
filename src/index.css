@@ -6,12 +6,67 @@
 }
 
 body {
-  background: hotpink;
+  background: rgb(255, 157, 206);
   font-family: 'Work Sans', sans-serif;
   font-size: 18px;
 }
 
 .main {
   width: 1400px;
+  height: 100%;
   margin: 30px auto;
+}
+
+.header {
+  padding: 20px;
+  font-weight:bold;
+  font-size: 24px;
+}
+.control {
+  padding: 20px;
+  position: absolute;
+}
+.task-in-list {
+  position: relative;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: color transform 500ms ease;
+}
+
+.task-in-list:hover {
+  transform: scale(1.1);
+  color: rgb(84, 0, 42);
+}
+
+.main-btn,
+.form-btn {
+  display: block;
+  background: rgb(248, 131, 190);
+  border: 0;
+  padding: 10px;
+  border-radius: 9px;
+  margin-top: 20px;
+  font-size: 18px;
+  transition: background transform 500ms ease;
+}
+
+.main-btn:hover,
+.form-btn:hover {
+  transform: scale(1.1);
+  background: rgb(255, 22, 138);
+}
+
+.reusable-form,
+.reusable-form input
+ {
+  display: block;
+}
+
+.reusable-form input {
+  margin-bottom: 10px;
+  border-radius: 9px;
+  padding: 10px;
+  font-size: 18px;
+  width: 1400px;
+  border-style: none;
 }

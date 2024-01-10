@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 export default function TaskInList(props) {
   return (
     <React.Fragment>
-    <div onClick={() => props.onTaskClick(props.task.id)}>
+    <div onClick={() => props.onTaskClick(props.task.id)} className='task-in-list'>
     <h3>{props.task.name}</h3>
     </div>
     </React.Fragment>

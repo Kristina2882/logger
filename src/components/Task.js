@@ -6,12 +6,13 @@ const {task} = props;
 
   return (
     <React.Fragment>
-        
+        <div className='task'>
         <h2>{task.name}</h2>
         <h3><em>{task.description}</em></h3>
         
-        <button onClick={() => props.onClickDelete(task.id)}>Delete task</button>
-        <button onClick={() => props.onClickEdit()}>Edit task</button>
+        <button className='delete-btn' onClick={() => props.onClickDelete(task.id)}>Delete task</button>
+        <button className='edit-btn' onClick={() => props.onClickEdit()}>Edit task</button>
+        </div>
     </React.Fragment>
   )
 }

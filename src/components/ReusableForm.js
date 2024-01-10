@@ -4,14 +4,14 @@ import PropTypes from 'prop-types';
 export default function ReusableForm(props) {
     return (
       <React.Fragment>
-        <form onSubmit={props.handleFormSubmission}>
+        <form onSubmit={props.handleFormSubmission} className="reusable-form">
           <input name="name" type="text" placeholder="Enter task name" />
           <input
             name="description"
             type="text"
             placeholder="Enter task description"
           />
-          <button type="submit">{props.buttonText}</button>
+          <button className="form-btn" type="submit">{props.buttonText}</button>
         </form>
       </React.Fragment>
     );

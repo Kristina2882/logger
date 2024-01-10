@@ -108,7 +108,7 @@ handleDeleteTask = (id) => {
     return (
       <React.Fragment>
         {currentlyVisible}
-        <button onClick={this.handleClick}>{buttonText}</button>
+        <button className='main-btn' onClick={this.handleClick}>{buttonText}</button>
       </React.Fragment>
     )
   }
