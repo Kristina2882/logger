@@ -31,7 +31,8 @@ export class TaskControl extends Component {
         showTask: false,
         showForm: false,
         editing: false,
-        logging: false
+        logging: false,
+        logs: []
     }
  }
 
@@ -95,11 +96,19 @@ handleDeleteTask = (id) => {
    selectedTask: null
   });
 }
+
+handleAddLog = (logToAdd) => {
+  const updatedLogs = this.state.logs.concat(logToAdd);
+  this.setState({
+    logs: updatedLogs,
+    logging: false
+  });
+}
   render() {
     let currentlyVisible = null;
     let buttonText = null;
     if (this.state.logging) {
-    currentlyVisible= <LogForm task={this.state.selectedTask}/>
+    currentlyVisible= <LogForm task={this.state.selectedTask} onAddLog={this.handleAddLog}/>
     buttonText='Back to tasks';
     }
     else if (this.state.editing) {
@@ -107,7 +116,7 @@ handleDeleteTask = (id) => {
      buttonText='Back to tasks';
     }
     else if (this.state.selectedTask != null) {
-      currentlyVisible = <Task task={this.state.selectedTask} onClickDelete={this.handleDeleteTask} onClickEdit={this.handleEditClick} onClickLog={this.handleLogClick}/>
+      currentlyVisible = <Task task={this.state.selectedTask} onClickDelete={this.handleDeleteTask} onClickEdit={this.handleEditClick} onClickLog={this.handleLogClick} loglist={this.state.logs}/>
       buttonText='Back to tasks';
     }
     else if (this.state.showForm) {

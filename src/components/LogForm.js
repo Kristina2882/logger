@@ -6,10 +6,11 @@ export default function LogForm(props) {
 
   function logSubmission(event) {
     event.preventDefault();
-    console.log("Logging reached");
-    console.log(event.target.work.value);
-    console.log(event.target.hours.value);
-    console.log(task.id);
+    props.onAddLog({
+      work: event.target.work.value,
+      hours: event.target.hours.value,
+      taskId: task.id 
+    })
   }
   return (
     <React.Fragment>
@@ -30,5 +31,6 @@ export default function LogForm(props) {
 }
 
 LogForm.propTypes = {
-    task: PropTypes.object
+    task: PropTypes.object,
+    onAddLog: PropTypes.func
 }
