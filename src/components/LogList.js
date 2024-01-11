@@ -7,7 +7,7 @@ export default function LogList(props) {
     <div>Logs</div>
     {
         props.loglist.map((log) => 
-            (<h3>{log.work} - {log.hours}</h3>)
+            (<h3>{log.work} - {log.hours} on {log.logDate}</h3>)
         )
     }
     </React.Fragment>

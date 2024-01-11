@@ -9,6 +9,7 @@ export default function LogForm(props) {
     props.onAddLog({
       work: event.target.work.value,
       hours: event.target.hours.value,
+      logDate: event.target.logDate.value,
       taskId: task.id 
     })
   }
@@ -23,6 +24,11 @@ export default function LogForm(props) {
          name="hours"
          type='text'
          placeholder='How much time did you spent?'
+         />
+         <input
+         name='logDate'
+         type='date'
+         placeholder='Select the date'
          />
          <button type='submit' className='log-btn'>Log hours</button>
         </form>

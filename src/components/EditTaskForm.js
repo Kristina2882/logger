@@ -10,6 +10,8 @@ export default function EditTaskForm(props) {
         props.onEditTask({
             name: event.target.name.value,
             description: event.target.description.value,
+            taskCreated: event.target.taskCreated.value,
+            taskDeadline: event.target.taskDeadline.value,
             id: task.id
         });
 

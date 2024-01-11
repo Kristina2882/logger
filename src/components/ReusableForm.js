@@ -11,6 +11,18 @@ export default function ReusableForm(props) {
             type="text"
             placeholder="Enter task description"
           />
+          <input
+            name="taskCreated"
+            type="date"
+            placeholder="Enter task description"
+          />
+           <input
+            name="taskDeadline"
+            type="date"
+            placeholder="Enter task description"
+          />
+
+
           <button className="form-btn" type="submit">{props.buttonText}</button>
         </form>
       </React.Fragment>
