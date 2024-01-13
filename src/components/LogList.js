@@ -1,13 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Log from './Log';
 
 export default function LogList(props) {
   return (
     <React.Fragment>
-    <div>Logs</div>
+    <div className='log-title'>Logs</div>
     {
         props.loglist.map((log) => 
-            (<h3>{log.work} - {log.hours} on {log.logDate}</h3>)
+            (<Log log={log} />)
         )
     }
     </React.Fragment>

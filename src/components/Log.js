@@ -1,9 +1,18 @@
-import React from 'react'
+import React from 'react';
+import PropTypes from 'prop-types';
 
-export default function Log() {
+export default function Log(props) {
+
+  const {log} = props;
   return (
     <React.Fragment>
-    <div>Log</div>
+    <div className='log-general'>
+    <div className='logged'> <h4>{log.work}</h4> </div> <div className='log-hours'><h4>{log.hours} on {log.logDate}</h4></div> 
+    </div>
     </React.Fragment>
   )
+}
+
+Log.propTypes = {
+  log: PropTypes.object
 }
