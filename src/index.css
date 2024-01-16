@@ -6,9 +6,10 @@
 }
 
 body {
-  background: rgb(255, 157, 206);
+  background: #0f0f0f;
   font-family: 'Work Sans', sans-serif;
   font-size: 18px;
+  color: #e5bcc4;
 }
 
 .main {
@@ -35,7 +36,7 @@ body {
 
 .task-in-list:hover {
   transform: scale(1.1);
-  color: rgb(84, 0, 42);
+  color: #c27181;
 }
 
 .main-btn,
@@ -46,7 +47,8 @@ body {
 .log-btn
  {
   display: block;
-  background: rgb(251, 120, 185);
+  background: #d594a1;
+  color: #261216;
   border: 0;
   padding: 10px;
   border-radius: 9px;
@@ -77,8 +79,8 @@ body {
 .add-log-btn:hover,
 .log-btn:hover  {
   transform: scale(1.1);
-  background: rgb(255, 22, 138);
-  color: antiquewhite;
+  background: #c27181;
+  color: #261216;
 }
 
 .reusable-form,
@@ -98,6 +100,8 @@ body {
   width: 1400px;
   border-style: none;
   font-size: 18px;
+  background: #e5bcc4;
+  color: #261216;
 }
 
 .task h2 {
@@ -118,17 +122,26 @@ body {
 }
 
 .log-general {
-  display: block;
   padding-top: 10px;
+  padding-left: 10px;
   width: 70%;
+  background: #e5bcc4;
+  color: #261216;
+  margin: 10px 0;
+  border-radius: 9px;
+  transition: color transform 500ms ease;
+}
+
+.log-general:hover {
+  background:  #c27181;
 }
 .logged,
 .log-hours {
-  display: inline;
+  display: inline-block;
+  margin: 5px;
+  padding-bottom: 10px;
 }
-.logged {
-text-align: left;
-}
-.log-hours  {
-text-align: right;
-}
+ .log-hours {
+float: right;
+padding-right: 20px;
+} 
