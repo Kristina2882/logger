@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {v4} from 'uuid';
 import ReusableForm from './ReusableForm';
 
 export default function NewTaskForm(props) {
@@ -11,8 +10,7 @@ export default function NewTaskForm(props) {
         name: event.target.name.value,
         description: event.target.description.value,
         taskCreated: event.target.taskCreated.value,
-        taskDeadline: event.target.taskDeadline.value,
-        id: v4()
+        taskDeadline: event.target.taskDeadline.value
      })
     }
   return (
