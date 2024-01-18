@@ -5,7 +5,7 @@ import NewTaskForm from './NewTaskForm';
 import EditTaskForm from './EditTaskForm';
 import LogForm from './LogForm';
 import db from './../firebase';
-import { collection, addDoc,onSnapshot, doc, updateDoc } from 'firebase/firestore';
+import { collection, addDoc,onSnapshot, doc, updateDoc, deleteDoc } from 'firebase/firestore';
 
 function TaskControl() {
   const [showForm, setShowForm] = useState(false);
@@ -76,9 +76,8 @@ await addDoc(collection(db, 'tasks'), newTask);
 setShowForm(false);
 }
 
-const handleDeleteTask = (id) => {
-  const newTaskList = mainTaskList.filter(task => task.id !== id);
-  setMainTaskList(newTaskList);
+const handleDeleteTask = async (id) => {
+  await deleteDoc(doc(db, 'tasks', id));
   setSelectedTask(null);
 }
 
