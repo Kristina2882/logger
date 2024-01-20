@@ -15,7 +15,7 @@ const {task} = props;
         <button className='delete-btn' onClick={() => props.onClickDelete(task.id)}>Delete task</button>
         <button className='edit-btn' onClick={() => props.onClickEdit()}>Edit task</button>
         <button className='add-log-btn' onClick={() => props.onClickLog()}>Log</button>
-        <LogList loglist={props.loglist.filter(log=> log.taskId === task.id)}/>
+        <LogList loglist={props.loglist.filter(log => log.taskId === task.id)}/>
         </div>
     </React.Fragment>
   )

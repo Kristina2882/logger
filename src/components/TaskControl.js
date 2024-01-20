@@ -39,6 +39,29 @@ function TaskControl() {
     return () => unsubscribe();
   },[]);
 
+  useEffect(() => {
+    const unsubscribe = onSnapshot(
+    collection(db, 'logs'),
+    (collectionSnapShot) => {
+    const logs = [];
+    collectionSnapShot.forEach((doc) => {
+    logs.push({
+      work: doc.data().work,
+      hours: doc.data().hours,
+      logDate: doc.data().logDate,
+      taskId: doc.data().taskId,
+      id: doc.id
+    });
+  
+    });
+    setLogs(logs);
+    },
+    (error) => {
+    setError(error.message);
+    });
+    return ()=> unsubscribe();
+  }, []);
+
  const handleLogClick = () => {
   setLogging(true);
  }
@@ -78,13 +101,16 @@ setShowForm(false);
 
 const handleDeleteTask = async (id) => {
   await deleteDoc(doc(db, 'tasks', id));
+  const logsToDelete = logs.filter(log=> log.taskId === id);
+  logsToDelete.forEach((log) => {
+   deleteDoc(doc(db, 'logs',log.id));
+  });
   setSelectedTask(null);
 }
 
-const handleAddLog = (logToAdd) => {
-  const updatedLogs = logs.concat(logToAdd);
+const handleAddLog = async (logToAdd) => {
+  await addDoc(collection(db, 'logs'), logToAdd);
   setLogging(false);
-  setLogs(updatedLogs);
 }
     let currentlyVisible = null;
     let buttonText = null;
