@@ -4,7 +4,7 @@ import Task from './Task';
 import NewTaskForm from './NewTaskForm';
 import EditTaskForm from './EditTaskForm';
 import LogForm from './LogForm';
-import { db } from './../firebase.js';
+import { db, auth } from './../firebase.js';
 import { collection, addDoc,onSnapshot, doc, updateDoc, deleteDoc } from 'firebase/firestore';
 
 function TaskControl() {
@@ -113,6 +113,15 @@ const handleAddLog = async (logToAdd) => {
   await addDoc(collection(db, 'logs'), logToAdd);
   setLogging(false);
 }
+
+if (auth.currentUser == null) {
+  return (
+    <React.Fragment>
+     <h2>Please sign in to access the logger.</h2>
+    </React.Fragment>
+  );
+}
+else if (auth.currentUser != null) {
     let currentlyVisible = null;
     let buttonText = null;
     if (error) {
@@ -145,6 +154,7 @@ const handleAddLog = async (logToAdd) => {
       </React.Fragment>
     );
 }
+}
   
 
-export default TaskControl
+export default TaskControl;

@@ -78,7 +78,8 @@ body {
 .edit-btn,
 .delete-btn,
 .add-log-btn,
-.log-btn
+.log-btn,
+.sign-btn
  {
   display: block;
   background: #d594a1;
@@ -111,7 +112,8 @@ body {
 .edit-btn:hover,
 .delete-btn:hover,
 .add-log-btn:hover,
-.log-btn:hover  {
+.log-btn:hover,
+.sign-btn:hover  {
   transform: scale(1.1);
   background: #c27181;
   color: #261216;
@@ -126,7 +128,8 @@ body {
 }
 
 .reusable-form input,
-.log-form input {
+.log-form input,
+.sign-form input {
   margin-bottom: 10px;
   border-radius: 9px;
   padding: 10px;
@@ -137,7 +140,17 @@ body {
   background: #e5bcc4;
   color: #261216;
 }
+.sign-form input {
+  width: 500px;
+  margin-right: 15px;
+  margin-top: 15px;
+}
 
+.sign-h2 {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  font-size: 22px;
+}
 .task h2 {
  margin-bottom: 10px;
  font-size: 24px;
