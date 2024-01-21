@@ -4,7 +4,7 @@ import Task from './Task';
 import NewTaskForm from './NewTaskForm';
 import EditTaskForm from './EditTaskForm';
 import LogForm from './LogForm';
-import db from './../firebase';
+import { db } from './../firebase.js';
 import { collection, addDoc,onSnapshot, doc, updateDoc, deleteDoc } from 'firebase/firestore';
 
 function TaskControl() {
