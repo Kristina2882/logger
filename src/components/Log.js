@@ -7,7 +7,7 @@ export default function Log(props) {
   return (
     <React.Fragment>
     <div className='log-general'>
-    <div className='logged'> <h4>{log.work}</h4> </div> <div className='log-hours'><h4>{log.hours} on {log.logDate}</h4></div> 
+    <div className='logged'> <h4>{log.work}</h4> </div> <div className='log-hours'><h4> {log.userName}  {log.hours} on {log.logDate}</h4></div> 
     </div>
     </React.Fragment>
   )

@@ -50,6 +50,7 @@ function TaskControl() {
       hours: doc.data().hours,
       logDate: doc.data().logDate,
       taskId: doc.data().taskId,
+      userName: doc.data().userName,
       id: doc.id
     });
   

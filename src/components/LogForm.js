@@ -10,12 +10,18 @@ export default function LogForm(props) {
       work: event.target.work.value,
       hours: event.target.hours.value,
       logDate: event.target.logDate.value,
+      userName: event.target.userName.value,
       taskId: task.id 
     })
   }
   return (
     <React.Fragment>
         <form className='log-form' onSubmit={logSubmission}>
+        <input name="userName"
+                type='text'
+                placeholder='Enter your name'
+         />
+
          <input name="work"
                 type='text'
                 placeholder='Describe your work'
