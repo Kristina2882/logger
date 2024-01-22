@@ -62,6 +62,7 @@ body {
 .task-in-list {
   position: relative;
   margin-top: 10px;
+  padding-top: 10px;
   margin-bottom: 20px;
   padding-bottom: 15px;
   cursor: pointer;

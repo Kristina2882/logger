@@ -6,6 +6,7 @@ import EditTaskForm from './EditTaskForm';
 import LogForm from './LogForm';
 import { db, auth } from './../firebase.js';
 import { collection, addDoc,onSnapshot, doc, updateDoc, deleteDoc } from 'firebase/firestore';
+import UserTaskView from './UserTaskView.js';
 
 function TaskControl() {
   const [showForm, setShowForm] = useState(false);
@@ -124,29 +125,56 @@ if (auth.currentUser == null) {
 else if (auth.currentUser != null) {
     let currentlyVisible = null;
     let buttonText = null;
-    if (error) {
-    currentlyVisible = <h4>There was an error: {error}!</h4>
-    }
-    else if (logging) {
-    currentlyVisible= <LogForm task={selectedTask} onAddLog={handleAddLog}/>
-    buttonText='Back to tasks';
-    }
-    else if (editing) {
-     currentlyVisible = <EditTaskForm task = {selectedTask} onEditTask={handleEditTaskInList}/>
-     buttonText='Back to tasks';
-    }
-    else if (selectedTask != null) {
-      currentlyVisible = <Task task={selectedTask} onClickDelete={handleDeleteTask} onClickEdit={handleEditClick} onClickLog={handleLogClick} loglist={logs}/>
+
+    console.log(auth.currentUser.email);
+    let testBool = auth.currentUser.email === 'admin@11.com';
+    console.log(testBool);
+
+    if (auth.currentUser.email === 'admin@11.com') {
+      if (editing) {
+       currentlyVisible = <EditTaskForm task = {selectedTask} onEditTask={handleEditTaskInList}/>
+       buttonText='Back to tasks';
+      }
+      else if (showForm) {
+       currentlyVisible = <NewTaskForm onNewTaskCreation={handleAddingNewTask}/>
+       buttonText='Back to tasks';
+      }
+ 
+      else if (error) {
+      currentlyVisible = <h4>There was an error: {error}!</h4>
+      }
+      else if (logging) {
+      currentlyVisible= <LogForm task={selectedTask} onAddLog={handleAddLog}/>
       buttonText='Back to tasks';
-    }
-    else if (showForm) {
-     currentlyVisible = <NewTaskForm onNewTaskCreation={handleAddingNewTask}/>
-     buttonText='Back to tasks';
-    }
-    else {
-        currentlyVisible=<TaskList taskList={mainTaskList} onTaskSelection={handleChangeSelectedTask}/>
+      }
+      else if (selectedTask != null) {
+        currentlyVisible = <Task task={selectedTask} onClickDelete={handleDeleteTask} onClickEdit={handleEditClick} onClickLog={handleLogClick} loglist={logs}/>
+        buttonText='Back to tasks';
+      }
+   
+      else {
+        currentlyVisible=<TaskList taskList={mainTaskList} onTaskSelection={handleChangeSelectedTask} userName={auth.currentUser.email}/>
         buttonText='Add new task';
     }
+  }
+  else {
+      if (error) {
+      currentlyVisible = <h4>There was an error: {error}!</h4>
+      }
+      else if (logging) {
+      currentlyVisible= <LogForm task={selectedTask} onAddLog={handleAddLog}/>
+      buttonText='Back to tasks';
+      }
+      else if (selectedTask != null) {
+        currentlyVisible = <UserTaskView task={selectedTask} onClickLog={handleLogClick} loglist={logs}/>
+        buttonText='Back to tasks';
+      }
+   
+      else {
+        currentlyVisible=<TaskList taskList={mainTaskList} onTaskSelection={handleChangeSelectedTask} userName={auth.currentUser.email}/>
+        buttonText='Add new task';
+    }
+  }
     return (
       <React.Fragment>
         {currentlyVisible}
