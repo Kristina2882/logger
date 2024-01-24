@@ -10,6 +10,7 @@ const {task} = props;
         <div className='task'>
         <h2>{task.name}</h2>
         <h3><em>{task.description}</em></h3>
+        <h4>Responsible: {task.taskResponsible}</h4>
         <h5>Created on: {task.taskCreated} Deadline: {task.taskDeadline}</h5>
         <button className='add-log-btn' onClick={() => props.onClickLog()}>Log</button>
         <LogList loglist={props.loglist.filter(log => log.taskId === task.id)}/>

@@ -12,6 +12,7 @@ export default function EditTaskForm(props) {
             description: event.target.description.value,
             taskCreated: event.target.taskCreated.value,
             taskDeadline: event.target.taskDeadline.value,
+            taskResponsible: event.target.taskResponsible.value,
             id: task.id
         });
 

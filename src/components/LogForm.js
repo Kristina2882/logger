@@ -10,7 +10,7 @@ export default function LogForm(props) {
       work: event.target.work.value,
       hours: event.target.hours.value,
       logDate: event.target.logDate.value,
-      userName: event.target.userName.value,
+      userName: props.userName,
       taskId: task.id 
     })
   }
@@ -19,7 +19,7 @@ export default function LogForm(props) {
         <form className='log-form' onSubmit={logSubmission}>
         <input name="userName"
                 type='text'
-                placeholder='Enter your name'
+                placeholder= {props.userName} readOnly
          />
 
          <input name="work"
@@ -44,5 +44,6 @@ export default function LogForm(props) {
 
 LogForm.propTypes = {
     task: PropTypes.object,
-    onAddLog: PropTypes.func
+    onAddLog: PropTypes.func,
+    userName: PropTypes.string
 }

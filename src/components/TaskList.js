@@ -3,11 +3,14 @@ import TaskInList from './TaskInList';
 import PropTypes from 'prop-types';
 
 export default function TaskList(props) {
+
+  const listForUser = props.taskList.filter(task => task.taskResponsible === props.userName);
+
   return (
     <React.Fragment>
       <h2>Tasks for {props.userName}</h2>
     {
-        props.taskList.map((task) => (
+        listForUser.map((task) => (
             <TaskInList task={task} key={task.id} onTaskClick={props.onTaskSelection}
             />
         ))

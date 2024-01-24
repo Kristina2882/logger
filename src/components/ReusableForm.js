@@ -21,6 +21,11 @@ export default function ReusableForm(props) {
             type="date"
             placeholder="Enter task description"
           />
+           <input
+            name="taskResponsible"
+            type="text"
+            placeholder="Select responsible"
+          />
 
 
           <button className="form-btn" type="submit">{props.buttonText}</button>

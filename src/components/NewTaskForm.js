@@ -10,7 +10,8 @@ export default function NewTaskForm(props) {
         name: event.target.name.value,
         description: event.target.description.value,
         taskCreated: event.target.taskCreated.value,
-        taskDeadline: event.target.taskDeadline.value
+        taskDeadline: event.target.taskDeadline.value,
+        taskResponsible: event.target.taskResponsible.value
      })
     }
   return (

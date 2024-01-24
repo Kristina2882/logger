@@ -6,8 +6,9 @@ export default function TaskInList(props) {
     <React.Fragment>
     <div onClick={() => props.onTaskClick(props.task.id)} className='task-in-list'>
     <h3>{props.task.name}</h3>
-    <h5>Created on: {props.task.taskCreated}</h5>
-    <h5>Deadline: {props.task.taskDeadline}</h5>
+    <h5><em>Responsible: </em>{props.task.taskResponsible}</h5>
+    <h5><em>Created on: </em>{props.task.taskCreated}</h5>
+    <h5><em>Deadline: </em>{props.task.taskDeadline}</h5>
     </div>
     </React.Fragment>
   )

@@ -7,6 +7,7 @@ import LogForm from './LogForm';
 import { db, auth } from './../firebase.js';
 import { collection, addDoc,onSnapshot, doc, updateDoc, deleteDoc } from 'firebase/firestore';
 import UserTaskView from './UserTaskView.js';
+import TaskListAdmin from './TaskListAdmin.js';
 
 function TaskControl() {
   const [showForm, setShowForm] = useState(false);
@@ -28,6 +29,7 @@ function TaskControl() {
           description: doc.data().description,
           taskCreated: doc.data().taskCreated,
           taskDeadline: doc.data().taskDeadline,
+          taskResponsible: doc.data().taskResponsible,
           id: doc.id
         });
       });
@@ -144,7 +146,7 @@ else if (auth.currentUser != null) {
       currentlyVisible = <h4>There was an error: {error}!</h4>
       }
       else if (logging) {
-      currentlyVisible= <LogForm task={selectedTask} onAddLog={handleAddLog}/>
+      currentlyVisible= <LogForm task={selectedTask} onAddLog={handleAddLog} userName={auth.currentUser.email}/>
       buttonText='Back to tasks';
       }
       else if (selectedTask != null) {
@@ -153,7 +155,7 @@ else if (auth.currentUser != null) {
       }
    
       else {
-        currentlyVisible=<TaskList taskList={mainTaskList} onTaskSelection={handleChangeSelectedTask} userName={auth.currentUser.email}/>
+        currentlyVisible=<TaskListAdmin taskList={mainTaskList} onTaskSelection={handleChangeSelectedTask} />
         buttonText='Add new task';
     }
   }
@@ -162,7 +164,7 @@ else if (auth.currentUser != null) {
       currentlyVisible = <h4>There was an error: {error}!</h4>
       }
       else if (logging) {
-      currentlyVisible= <LogForm task={selectedTask} onAddLog={handleAddLog}/>
+      currentlyVisible= <LogForm task={selectedTask} onAddLog={handleAddLog} userName={auth.currentUser.email}/>
       buttonText='Back to tasks';
       }
       else if (selectedTask != null) {
