@@ -156,11 +156,11 @@ else if (auth.currentUser != null) {
 
     if (auth.currentUser.email === 'admin@11.com') {
       if (editing) {
-       currentlyVisible = <EditTaskForm task = {selectedTask} onEditTask={handleEditTaskInList}/>
+       currentlyVisible = <EditTaskForm task = {selectedTask} onEditTask={handleEditTaskInList} userList={userList}/>
        buttonText='Back to tasks';
       }
       else if (showForm) {
-       currentlyVisible = <NewTaskForm onNewTaskCreation={handleAddingNewTask}/>
+       currentlyVisible = <NewTaskForm onNewTaskCreation={handleAddingNewTask} userList={userList}/>
        buttonText='Back to tasks';
       }
  

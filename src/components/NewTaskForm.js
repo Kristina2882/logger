@@ -19,11 +19,13 @@ export default function NewTaskForm(props) {
      <ReusableForm
      buttonText = 'Add new task'
      handleFormSubmission = {handleNewTask}
+     userList={props.userList}
      />
     </React.Fragment>
   )
 }
 
 NewTaskForm.propTypes = {
-    onNewTaskCreation: PropTypes.func
+    onNewTaskCreation: PropTypes.func,
+    userList: PropTypes.array
 }

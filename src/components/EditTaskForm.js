@@ -23,6 +23,7 @@ export default function EditTaskForm(props) {
             <ReusableForm
             buttonText='Save changes'
             handleFormSubmission={handleEditTask}
+            userList={props.userList}
             />
         </React.Fragment>
     );
@@ -30,5 +31,6 @@ export default function EditTaskForm(props) {
 
 EditTaskForm.propTypes = {
     task: PropTypes.object,
-    onEditTask: PropTypes.func
+    onEditTask: PropTypes.func,
+    userList: PropTypes.array
 }

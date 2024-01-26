@@ -21,11 +21,12 @@ export default function ReusableForm(props) {
             type="date"
             placeholder="Enter task description"
           />
-           <input
-            name="taskResponsible"
-            type="text"
-            placeholder="Select responsible"
-          />
+           <select name="taskResponsible">
+            {props.userList.map((user) => (
+              <option value={user.name}>{user.name}</option>
+            ))
+            }
+           </select>
 
 
           <button className="form-btn" type="submit">{props.buttonText}</button>
@@ -36,5 +37,6 @@ export default function ReusableForm(props) {
 
 ReusableForm.propTypes = {
     buttonText: PropTypes.string,
-    handleFormSubmission: PropTypes.func
+    handleFormSubmission: PropTypes.func,
+    userList: PropTypes.array
 }
