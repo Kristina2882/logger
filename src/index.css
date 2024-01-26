@@ -234,3 +234,6 @@ display: inline-table;
   padding-left: 450px;
   align-content:end;
 }
+.log-number {
+  padding-top: 15px;
+}

@@ -13,6 +13,8 @@ const {task} = props;
         <h4>Responsible: {task.taskResponsible}</h4>
         <h5>Created on: {task.taskCreated} Deadline: {task.taskDeadline}</h5>
         
+        <h5>Number of logs: {props.loglist.filter(log => log.taskId === task.id).length}</h5>
+        
         <button className='delete-btn' onClick={() => props.onClickDelete(task.id)}>Delete task</button>
         <button className='edit-btn' onClick={() => props.onClickEdit()}>Edit task</button>
         <button className='add-log-btn' onClick={() => props.onClickLog()}>Log</button>
