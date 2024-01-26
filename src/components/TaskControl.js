@@ -9,6 +9,7 @@ import { collection, addDoc,onSnapshot, doc, updateDoc, deleteDoc } from 'fireba
 import UserTaskView from './UserTaskView.js';
 import TaskListAdmin from './TaskListAdmin.js';
 
+
 function TaskControl() {
   const [showForm, setShowForm] = useState(false);
   const [mainTaskList, setMainTaskList] = useState([]);
@@ -17,6 +18,27 @@ function TaskControl() {
   const [logging, setLogging] = useState(false);
   const [logs, setLogs] = useState([]);
   const [error, setError] = useState(null);
+  const [userList, setUserList] = useState([]);
+
+  useEffect(() => {
+    const unsubscribe = onSnapshot(
+      collection(db, 'users'),
+      (collectionSnapShot) => {
+        const users = [];
+        collectionSnapShot.forEach((doc) => {
+          users.push({
+            name: doc.data().name,
+            id: doc.id
+          })
+        });
+        setUserList(users);
+      },
+      (error) => {
+        setError(error.message);
+       });
+  
+    return () => unsubscribe();
+  }, []);
 
   useEffect(() => {
   const unsubscribe = onSnapshot(
@@ -155,7 +177,7 @@ else if (auth.currentUser != null) {
       }
    
       else {
-        currentlyVisible=<TaskListAdmin taskList={mainTaskList} onTaskSelection={handleChangeSelectedTask} />
+        currentlyVisible=<TaskListAdmin taskList={mainTaskList} onTaskSelection={handleChangeSelectedTask} userList={userList} />
         buttonText='Add new task';
     }
   }

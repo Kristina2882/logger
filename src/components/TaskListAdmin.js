@@ -16,6 +16,7 @@ export default function TaskListAdmin(props) {
 
   return (
     <React.Fragment>
+      <div className="admin-tasks">
       <h2>All Tasks</h2>
       <form className="filter-form" onSubmit={filterByResponsible}>
         <input
@@ -33,7 +34,19 @@ export default function TaskListAdmin(props) {
           key={task.id}
           onTaskClick={props.onTaskSelection}
         />
-      ))}
+        ))}
+        </div>
+         <div className="admin-user-list">
+          <h2>All users</h2> 
+          <ul>
+          {
+            props.userList.map((user) => (
+              <li>{user.name}</li>
+            ))
+          }      
+          </ul>
+        </div> 
+      
     </React.Fragment>
   );
 }
@@ -41,4 +54,5 @@ export default function TaskListAdmin(props) {
 TaskListAdmin.propTypes = {
   taskList: PropTypes.array,
   onTaskClick: PropTypes.func,
+  userList: PropTypes.array
 };

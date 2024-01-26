@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { auth } from './../firebase.js';
+import { db } from "./../firebase.js";
+import { addDoc, collection } from "firebase/firestore";
 
 function SignIn() {
     const [signUpSuccess, setSignUpSuccess] = useState(null);
@@ -24,6 +26,8 @@ function SignIn() {
         event.preventDefault();
         const email = event.target.email.value;
         const password = event.target.password.value;
+
+        addDoc(collection(db, 'users'), {name: email});
         createUserWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
          setSignUpSuccess(`You have successfully signed up, ${userCredential.user.email}!`);
