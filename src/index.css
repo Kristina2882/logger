@@ -190,7 +190,7 @@ body {
   padding-top: 10px;
   padding-left: 10px;
   margin: 10px 0;
-  width: 700px;
+  width: 750px;
   background: #e5bcc4;
   color: #261216;
   border-radius: 9px;
@@ -208,10 +208,23 @@ body {
   margin: 5px;
   padding-bottom: 10px;
 }
- .log-hours {
-float: right;
-padding-right: 20px;
-} 
+
+.log-hours,
+.log-delete {
+  display:inline-flex;
+  float: right;
+}
+
+.log-delete {
+  padding-left: 15px;
+  padding-right: 15px;
+  cursor: pointer;
+  transition: color transform 500ms ease;
+}
+
+.log-delete:hover {
+  color:#e5bcc4;
+}
 
 .admin-user-list,
 .admin-tasks{
