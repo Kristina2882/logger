@@ -59,8 +59,9 @@ body {
   padding: 20px;
   position: absolute;
 }
-.task-in-list {
+.task-in-list-gen  .task-in-list {
   position: relative;
+  display: inline-block;
   margin-top: 10px;
   padding-top: 10px;
   margin-bottom: 20px;
@@ -73,7 +74,7 @@ body {
  padding-top: 9px;
 }
 
-.task-in-list:hover {
+.task-in-list-gen  .task-in-list:hover {
   transform: scale(1.1);
   color: #c27181;
 }
@@ -249,4 +250,26 @@ display: inline-table;
 }
 .log-number {
   padding-top: 15px;
+}
+
+.task-in-list-gen .counter {
+  float:right;
+  display: inline;
+  position: relative;
+  align-content:end;
+  background:#d594a1;
+  color: #261216;
+  height: 40px;
+  width: 40px;
+  margin: 20px;
+  border-radius: 40px;
+}
+
+.task-in-list-gen .counter h5 {
+  text-align:center;
+  padding-top: 10px;
+}
+
+.task-in-list-gen {
+  display: block;
 }

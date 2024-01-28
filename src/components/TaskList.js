@@ -11,7 +11,7 @@ export default function TaskList(props) {
       <h2>Tasks for {props.userName}</h2>
     {
         listForUser.map((task) => (
-            <TaskInList task={task} key={task.id} onTaskClick={props.onTaskSelection}
+            <TaskInList task={task} key={task.id} onTaskClick={props.onTaskSelection} loglist={props.loglist}
             />
         ))
     }
@@ -23,5 +23,6 @@ export default function TaskList(props) {
 TaskList.propTypes = {
     taskList: PropTypes.array,
     onTaskClick: PropTypes.func,
-    userName: PropTypes.string
+    userName: PropTypes.string,
+    loglist: PropTypes.array
 }

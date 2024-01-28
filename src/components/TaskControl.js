@@ -139,6 +139,10 @@ const handleAddLog = async (logToAdd) => {
   setLogging(false);
 }
 
+const handleLogDelete = async (id) => {
+  await deleteDoc(doc(db, 'logs', id));
+}
+
 if (auth.currentUser == null) {
   return (
     <React.Fragment>
@@ -172,12 +176,12 @@ else if (auth.currentUser != null) {
       buttonText='Back to tasks';
       }
       else if (selectedTask != null) {
-        currentlyVisible = <Task task={selectedTask} onClickDelete={handleDeleteTask} onClickEdit={handleEditClick} onClickLog={handleLogClick} loglist={logs}/>
+        currentlyVisible = <Task task={selectedTask} onClickDelete={handleDeleteTask} onClickEdit={handleEditClick} onClickLog={handleLogClick} loglist={logs} onLogDelete={handleLogDelete}/>
         buttonText='Back to tasks';
       }
    
       else {
-        currentlyVisible=<TaskListAdmin taskList={mainTaskList} onTaskSelection={handleChangeSelectedTask} userList={userList} />
+        currentlyVisible=<TaskListAdmin taskList={mainTaskList} onTaskSelection={handleChangeSelectedTask} userList={userList} loglist={logs}/>
         buttonText='Add new task';
     }
   }
@@ -190,12 +194,12 @@ else if (auth.currentUser != null) {
       buttonText='Back to tasks';
       }
       else if (selectedTask != null) {
-        currentlyVisible = <UserTaskView task={selectedTask} onClickLog={handleLogClick} loglist={logs}/>
+        currentlyVisible = <UserTaskView task={selectedTask} onClickLog={handleLogClick} loglist={logs} onLogDelete={handleLogDelete}/>
         buttonText='Back to tasks';
       }
    
       else {
-        currentlyVisible=<TaskList taskList={mainTaskList} onTaskSelection={handleChangeSelectedTask} userName={auth.currentUser.email}/>
+        currentlyVisible=<TaskList taskList={mainTaskList} onTaskSelection={handleChangeSelectedTask} userName={auth.currentUser.email} loglist={logs}/>
         buttonText='Add new task';
     }
   }

@@ -15,7 +15,7 @@ const {task} = props;
         <h5 className='log-number'>Number of logs: {props.loglist.filter(log => log.taskId === task.id).length}</h5>
         <button className='add-log-btn' onClick={() => props.onClickLog()}>Log</button>
         
-        <LogList loglist={props.loglist.filter(log => log.taskId === task.id)}/>
+        <LogList loglist={props.loglist.filter(log => log.taskId === task.id)} onLogDelete={props.onLogDelete}/>
         </div>
     </React.Fragment>
   )
@@ -25,5 +25,6 @@ UserTaskView.propTypes = {
     onTaskClick: PropTypes.func,
     task: PropTypes.object,
     onClickLog: PropTypes.func,
-    loglist: PropTypes.array
+    loglist: PropTypes.array,
+    onLogDelete: PropTypes.func
 }

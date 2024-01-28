@@ -18,7 +18,7 @@ const {task} = props;
         <button className='delete-btn' onClick={() => props.onClickDelete(task.id)}>Delete task</button>
         <button className='edit-btn' onClick={() => props.onClickEdit()}>Edit task</button>
         <button className='add-log-btn' onClick={() => props.onClickLog()}>Log</button>
-        <LogList loglist={props.loglist.filter(log => log.taskId === task.id)}/>
+        <LogList loglist={props.loglist.filter(log => log.taskId === task.id)} onLogDelete={props.onLogDelete}/>
         </div>
     </React.Fragment>
   )
@@ -30,5 +30,6 @@ Task.propTypes = {
     onClickDelete: PropTypes.func,
     onClickEdit: PropTypes.func,
     onClickLog: PropTypes.func,
-    loglist: PropTypes.array
+    loglist: PropTypes.array, 
+    onLogDelete: PropTypes.func
 }

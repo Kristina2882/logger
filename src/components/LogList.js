@@ -8,7 +8,7 @@ export default function LogList(props) {
     <div className='log-title'>Logs</div>
     {
         props.loglist.map((log) => 
-            (<Log log={log} />)
+            (<Log log={log} onLogDelete={() => props.onLogDelete(log.id)}  />)
         )
     }
     </React.Fragment>
@@ -16,5 +16,6 @@ export default function LogList(props) {
 }
 
 LogList.propTypes = {
-    loglist: PropTypes.array
+    loglist: PropTypes.array,
+    onLogDelete: PropTypes.func
 }

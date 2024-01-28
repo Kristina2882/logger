@@ -35,6 +35,7 @@ export default function TaskListAdmin(props) {
           task={task}
           key={task.id}
           onTaskClick={props.onTaskSelection}
+          loglist={props.loglist}
         />
         ))}
         </div>
@@ -56,5 +57,6 @@ export default function TaskListAdmin(props) {
 TaskListAdmin.propTypes = {
   taskList: PropTypes.array,
   onTaskClick: PropTypes.func,
-  userList: PropTypes.array
+  userList: PropTypes.array,
+  loglist: PropTypes.array
 };
