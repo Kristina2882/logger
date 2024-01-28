@@ -8,7 +8,7 @@ export default function LogForm(props) {
     event.preventDefault();
     props.onAddLog({
       work: event.target.work.value,
-      hours: event.target.hours.value,
+      hours: parseInt(event.target.hours.value),
       logDate: event.target.logDate.value,
       userName: props.userName,
       taskId: task.id 
@@ -28,7 +28,7 @@ export default function LogForm(props) {
          />
          <input
          name="hours"
-         type='text'
+         type='number'
          placeholder='How much time did you spent?'
          />
          <input
