@@ -5,9 +5,10 @@ import NewTaskForm from './NewTaskForm';
 import EditTaskForm from './EditTaskForm';
 import LogForm from './LogForm';
 import { db, auth } from './../firebase.js';
-import { collection, addDoc,onSnapshot, doc, updateDoc, deleteDoc } from 'firebase/firestore';
+import { collection, addDoc,onSnapshot, doc, updateDoc, deleteDoc, query, orderBy } from 'firebase/firestore';
 import UserTaskView from './UserTaskView.js';
 import TaskListAdmin from './TaskListAdmin.js';
+import { formatDistanceToNow } from 'date-fns';
 
 
 function TaskControl() {
@@ -19,6 +20,24 @@ function TaskControl() {
   const [logs, setLogs] = useState([]);
   const [error, setError] = useState(null);
   const [userList, setUserList] = useState([]);
+
+  useEffect(() => {
+   function updateLogElapsedWaitTime() {
+    const newLogs = logs.map((log) => {
+     const newFormattedWaitTime = formatDistanceToNow(log.logTime);
+     return {...log, formattedWaitTime: newFormattedWaitTime}
+    });
+    setLogs(newLogs);
+   }
+   const waitTimeUpdateTimer = setInterval(() => 
+   updateLogElapsedWaitTime(),
+   60000
+   );
+   return function cleanUp() {
+    clearInterval(waitTimeUpdateTimer);
+   }
+
+  }, [logs]);
 
   useEffect(() => {
     const unsubscribe = onSnapshot(
@@ -65,15 +84,23 @@ function TaskControl() {
   },[]);
 
   useEffect(() => {
+    const queryByTimestamp = query(
+      collection(db, "logs"), 
+      orderBy('logTime')
+    );
+
     const unsubscribe = onSnapshot(
-    collection(db, 'logs'),
+    queryByTimestamp,
     (collectionSnapShot) => {
     const logs = [];
     collectionSnapShot.forEach((doc) => {
+    const logTime = doc.get('logTime', {serverTimestamps: 'estimate'}).toDate();
+    const jsDate = new Date(logTime);
     logs.push({
       work: doc.data().work,
       hours: doc.data().hours,
-      logDate: doc.data().logDate,
+      logTime: jsDate,
+      formattedWaitTime: formatDistanceToNow(jsDate),
       taskId: doc.data().taskId,
       userName: doc.data().userName,
       id: doc.id
