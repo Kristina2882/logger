@@ -9,6 +9,7 @@ import { collection, addDoc,onSnapshot, doc, updateDoc, deleteDoc, query, orderB
 import UserTaskView from './UserTaskView.js';
 import TaskListAdmin from './TaskListAdmin.js';
 import { formatDistanceToNow } from 'date-fns';
+import Header from './Header.js';
 
 
 function TaskControl() {
@@ -20,6 +21,7 @@ function TaskControl() {
   const [logs, setLogs] = useState([]);
   const [error, setError] = useState(null);
   const [userList, setUserList] = useState([]);
+  const [inOrOutHeader, setInOrOutHeader] = useState('Sign In');
 
   useEffect(() => {
    function updateLogElapsedWaitTime() {
@@ -171,8 +173,10 @@ const handleLogDelete = async (id) => {
 }
 
 if (auth.currentUser == null) {
+  setInOrOutHeader('Sign In');
   return (
     <React.Fragment>
+      <Header inOrOut={inOrOutHeader}/>
      <h2>Please sign in to access the logger.</h2>
     </React.Fragment>
   );
@@ -180,6 +184,7 @@ if (auth.currentUser == null) {
 else if (auth.currentUser != null) {
     let currentlyVisible = null;
     let buttonText = null;
+    setInOrOutHeader('Sign Out');
 
     console.log(auth.currentUser.email);
     let testBool = auth.currentUser.email === 'admin@11.com';
@@ -232,6 +237,7 @@ else if (auth.currentUser != null) {
   }
     return (
       <React.Fragment>
+          <Header inOrOut={inOrOutHeader}/>
         {currentlyVisible}
        {error ? null : <button className='main-btn' onClick={handleClick}>{buttonText}</button>}
       </React.Fragment>
