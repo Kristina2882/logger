@@ -2,12 +2,14 @@ import React from "react";
 import TaskControl from "./components/TaskControl";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import SignIn from "./components/SignIn";
+import Header from "./components/Header";
 
 function App() {
+
   return (
     <Router>
    <div className="main">
-  
+    <Header/>
     <div className="control">
     <Routes>
      <Route path="/sign-in" element={<SignIn/>}/>

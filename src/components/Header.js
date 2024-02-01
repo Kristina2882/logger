@@ -1,9 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
 
 
-export default function Header(props) {
+export default function Header() {
 
     return (
       <div className='header'>
@@ -16,14 +15,9 @@ export default function Header(props) {
           <Link className='menu-link' to='/'>Home</Link>
           </li>
           <li>
-          <Link className='menu-link'  to='sign-in'>{props.inOrOut}</Link>
+          <Link className='menu-link'  to='sign-in'>Sign In</Link>
           </li>
         </ul>
       </div>
     )
   }
-
-  Header.propTypes = {
-    inOrOut: PropTypes.string
-  }
-

@@ -9,7 +9,8 @@ import { collection, addDoc,onSnapshot, doc, updateDoc, deleteDoc, query, orderB
 import UserTaskView from './UserTaskView.js';
 import TaskListAdmin from './TaskListAdmin.js';
 import { formatDistanceToNow } from 'date-fns';
-import Header from './Header.js';
+import SignIn from './SignIn.js';
+import SignOut from './SignOut.js';
 
 
 function TaskControl() {
@@ -21,7 +22,7 @@ function TaskControl() {
   const [logs, setLogs] = useState([]);
   const [error, setError] = useState(null);
   const [userList, setUserList] = useState([]);
-  const [inOrOutHeader, setInOrOutHeader] = useState('Sign In');
+  const [showSignIn, setShowSignIn] = useState(true);
 
   useEffect(() => {
    function updateLogElapsedWaitTime() {
@@ -172,26 +173,36 @@ const handleLogDelete = async (id) => {
   await deleteDoc(doc(db, 'logs', id));
 }
 
+const handleSignIn = () => {
+ setShowSignIn(false);
+}
+
+const handleSignOut = () => {
+  setShowSignIn(true);
+}
+
+
 if (auth.currentUser == null) {
-  setInOrOutHeader('Sign In');
   return (
     <React.Fragment>
-      <Header inOrOut={inOrOutHeader}/>
      <h2>Please sign in to access the logger.</h2>
+     <SignIn onSignIn={handleSignIn}/>
     </React.Fragment>
   );
 }
 else if (auth.currentUser != null) {
     let currentlyVisible = null;
     let buttonText = null;
-    setInOrOutHeader('Sign Out');
 
     console.log(auth.currentUser.email);
     let testBool = auth.currentUser.email === 'admin@11.com';
     console.log(testBool);
 
     if (auth.currentUser.email === 'admin@11.com') {
-      if (editing) {
+      if (showSignIn) {
+        <SignIn onSignIn={handleSignIn}/>
+      }
+      else if (editing) {
        currentlyVisible = <EditTaskForm task = {selectedTask} onEditTask={handleEditTaskInList} userList={userList}/>
        buttonText='Back to tasks';
       }
@@ -218,7 +229,10 @@ else if (auth.currentUser != null) {
     }
   }
   else {
-      if (error) {
+    if (showSignIn) {
+      <SignIn onSignIn={handleSignIn}/>
+    }
+    else if (error) {
       currentlyVisible = <h4>There was an error: {error}!</h4>
       }
       else if (logging) {
@@ -237,7 +251,7 @@ else if (auth.currentUser != null) {
   }
     return (
       <React.Fragment>
-          <Header inOrOut={inOrOutHeader}/>
+        <SignOut onSignOut={handleSignOut}/>
         {currentlyVisible}
        {error ? null : <button className='main-btn' onClick={handleClick}>{buttonText}</button>}
       </React.Fragment>
