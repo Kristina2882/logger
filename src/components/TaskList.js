@@ -8,6 +8,7 @@ export default function TaskList(props) {
 
   return (
     <React.Fragment>
+      <div className='user-tasks'>
       <h2>Tasks for {props.userName}</h2>
     {
         listForUser.map((task) => (
@@ -15,6 +16,7 @@ export default function TaskList(props) {
             />
         ))
     }
+    </div>
     </React.Fragment>
     
   )

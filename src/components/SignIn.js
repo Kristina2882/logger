@@ -28,8 +28,9 @@ function SignIn(props) {
         event.preventDefault();
         const email = event.target.email.value;
         const password = event.target.password.value;
+        const firstName = event.target.firstName.value;
 
-        addDoc(collection(db, 'users'), {name: email});
+        addDoc(collection(db, 'users'), {name: email, firstName: firstName});
         createUserWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
          setSignUpSuccess(`You have successfully signed up, ${userCredential.user.email}!`);
@@ -54,6 +55,11 @@ function SignIn(props) {
             name="password"
             type="password"
             placeholder="Enter your password"
+            />
+             <input
+            name="firstName"
+            type="text"
+            placeholder="Enter your first name"
             />
             <button type="submit" className="sign-btn">Sign Up!</button>
             </form>

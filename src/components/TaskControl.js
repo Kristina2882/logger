@@ -251,7 +251,7 @@ else if (auth.currentUser != null) {
   }
     return (
       <React.Fragment>
-        <SignOut onSignOut={handleSignOut}/>
+         <SignOut onSignOut={handleSignOut}/>
         {currentlyVisible}
        {error ? null : <button className='main-btn' onClick={handleClick}>{buttonText}</button>}
       </React.Fragment>

@@ -228,7 +228,8 @@ body {
 }
 
 .admin-user-list,
-.admin-tasks{
+.admin-tasks,
+.sign-out{
 display: inline-table;
 }
 
@@ -274,9 +275,12 @@ display: inline-table;
   display: block;
 }
 
+.user-tasks,
 .sign-out {
-  float:right;
-  align-content:end;
+  display: inline-table;
+}
+
+.sign-out {
+  float: right;
   margin-left: 100px;
-  display: inline;
 }
