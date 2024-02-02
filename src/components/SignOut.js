@@ -19,9 +19,10 @@ function SignOut(props) {
 
 return (
     <React.Fragment>
-    <h2 className="sign-h2">Sign Out</h2>
+    <div className="sign-out">
     {signOutSuccess}
     <button className="sign-btn" onClick={doSignOut}>Sign Out!</button>
+    </div>
     </React.Fragment>
 );
 }

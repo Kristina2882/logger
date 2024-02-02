@@ -12,8 +12,7 @@ body {
   color: #e5bcc4;
   margin-top: 20px;
 }
-.header,
-.header ul.nav li  {
+.header  {
   margin-bottom: 20px;
 }
 
@@ -38,6 +37,7 @@ body {
 .menu-link {
   color: #e5bcc4;
   text-decoration: none;
+  display: inline;
 }
 
 .header ul.nav li:hover {
@@ -59,7 +59,7 @@ body {
   padding: 20px;
   position: absolute;
 }
-.task-in-list-gen  .task-in-list {
+.task-in-list-gen  .task-in-list{
   position: relative;
   display: inline-block;
   margin-top: 10px;
@@ -245,7 +245,7 @@ display: inline-table;
 
 .admin-user-list{
   float: right;
-  padding-left: 450px;
+  padding-left: 350px;
   align-content:end;
 }
 .log-number {
@@ -272,4 +272,11 @@ display: inline-table;
 
 .task-in-list-gen {
   display: block;
+}
+
+.sign-out {
+  float:right;
+  align-content:end;
+  margin-left: 100px;
+  display: inline;
 }
