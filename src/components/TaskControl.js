@@ -22,7 +22,7 @@ function TaskControl() {
   const [logs, setLogs] = useState([]);
   const [error, setError] = useState(null);
   const [userList, setUserList] = useState([]);
-  const [showSignIn, setShowSignIn] = useState(true);
+  const [showSignIn, setShowSignIn] = useState(false);
 
   useEffect(() => {
    function updateLogElapsedWaitTime() {
