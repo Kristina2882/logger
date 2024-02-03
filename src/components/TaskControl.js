@@ -11,6 +11,7 @@ import TaskListAdmin from './TaskListAdmin.js';
 import { formatDistanceToNow } from 'date-fns';
 import SignIn from './SignIn.js';
 import SignOut from './SignOut.js';
+import AdminUserView from './AdminUserView.js';
 
 
 function TaskControl() {
@@ -23,6 +24,7 @@ function TaskControl() {
   const [error, setError] = useState(null);
   const [userList, setUserList] = useState([]);
   const [showSignIn, setShowSignIn] = useState(false);
+  const [selectedUser, setSelectedUser] = useState(null);
 
   useEffect(() => {
    function updateLogElapsedWaitTime() {
@@ -50,6 +52,9 @@ function TaskControl() {
         collectionSnapShot.forEach((doc) => {
           users.push({
             name: doc.data().name,
+            firstName: doc.data().firstName,
+            surname: doc.data().surname,
+            dob: doc.data().dob,
             id: doc.id
           })
         });
@@ -145,6 +150,9 @@ function TaskControl() {
         setEditing(false);
         setLogging(false);
     }
+    else if (selectedUser != null) {
+      setSelectedUser(null);
+    }
     else {
       setShowForm(!showForm);
   }
@@ -181,6 +189,11 @@ const handleSignOut = () => {
   setShowSignIn(true);
 }
 
+const handleUserSelection = (id) => {
+  const selectedUserProfile = userList.filter(user => user.id === id)[0];
+  setSelectedUser(selectedUserProfile);
+}
+
 
 if (auth.currentUser == null) {
   return (
@@ -201,6 +214,10 @@ else if (auth.currentUser != null) {
     if (auth.currentUser.email === 'admin@11.com') {
       if (showSignIn) {
         <SignIn onSignIn={handleSignIn}/>
+      }
+      else if (selectedUser != null) {
+        currentlyVisible=<AdminUserView userProfile={selectedUser}/>
+        buttonText='Back to tasks';
       }
       else if (editing) {
        currentlyVisible = <EditTaskForm task = {selectedTask} onEditTask={handleEditTaskInList} userList={userList}/>
@@ -224,7 +241,7 @@ else if (auth.currentUser != null) {
       }
    
       else {
-        currentlyVisible=<TaskListAdmin taskList={mainTaskList} onTaskSelection={handleChangeSelectedTask} userList={userList} loglist={logs}/>
+        currentlyVisible=<TaskListAdmin taskList={mainTaskList} onTaskSelection={handleChangeSelectedTask} userList={userList} loglist={logs} onUserSelection={handleUserSelection}/>
         buttonText='Add new task';
     }
   }

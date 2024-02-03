@@ -59,7 +59,8 @@ body {
   padding: 20px;
   position: absolute;
 }
-.task-in-list-gen  .task-in-list{
+.task-in-list-gen  .task-in-list,
+.user-in-list{
   position: relative;
   display: inline-block;
   margin-top: 10px;
@@ -70,11 +71,17 @@ body {
   transition: color transform 500ms ease;
 }
 
+.user-in-list {
+  display: block;
+  padding: 0px;
+}
+
 .task-in-list h5 {
  padding-top: 9px;
 }
 
-.task-in-list-gen  .task-in-list:hover {
+.task-in-list-gen  .task-in-list:hover,
+.user-in-list:hover {
   transform: scale(1.1);
   color: #c27181;
 }
@@ -170,11 +177,13 @@ body {
   margin-bottom: 10px;
   font-size: 22px;
 }
-.task h2 {
+.task h2,
+.user-profile h2 {
  margin-bottom: 10px;
  font-size: 24px;
 }
-.task h3 {
+.task h3,
+.user-profile h3 {
   margin: 10px 0px;
   font-size: 20px;
   margin-bottom: 15px;
@@ -283,4 +292,12 @@ display: inline-table;
 .sign-out {
   float: right;
   margin-left: 100px;
+}
+
+.user-profile {
+  display: inline-block;
+}
+
+.user-profile h2 {
+  padding-bottom: 20px;
 }

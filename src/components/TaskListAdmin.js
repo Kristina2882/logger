@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import TaskInList from "./TaskInList";
 import PropTypes from "prop-types";
+import UserInList from "./UserInList";
 
 export default function TaskListAdmin(props) {
   const [taskList, setTaskList] = useState(props.taskList);
@@ -41,13 +42,16 @@ export default function TaskListAdmin(props) {
         </div>
          <div className="admin-user-list">
           <h2>All users</h2> 
-          <ul className="user-list">
+
           {
             props.userList.map((user) => (
-              <li>{user.name}</li>
+              <UserInList 
+              userProfile={user}
+              onUserClick={props.onUserSelection}
+              />
             ))
           }      
-          </ul>
+          
         </div> 
       
     </React.Fragment>
@@ -58,5 +62,6 @@ TaskListAdmin.propTypes = {
   taskList: PropTypes.array,
   onTaskClick: PropTypes.func,
   userList: PropTypes.array,
-  loglist: PropTypes.array
+  loglist: PropTypes.array,
+  onUserSelection: PropTypes.func
 };
