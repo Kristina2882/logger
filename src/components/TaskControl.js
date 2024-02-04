@@ -11,6 +11,7 @@ import TaskListAdmin from './TaskListAdmin.js';
 import { formatDistanceToNow } from 'date-fns';
 import SignIn from './SignIn.js';
 import SignOut from './SignOut.js';
+import SignUp from './SignUp.js';
 import AdminUserView from './AdminUserView.js';
 
 
@@ -23,8 +24,9 @@ function TaskControl() {
   const [logs, setLogs] = useState([]);
   const [error, setError] = useState(null);
   const [userList, setUserList] = useState([]);
-  const [showSignIn, setShowSignIn] = useState(false);
+  const [showSignIn, setShowSignIn] = useState(true);
   const [selectedUser, setSelectedUser] = useState(null);
+  const [showSignUp, setShowSignUp] = useState(false);
 
   useEffect(() => {
    function updateLogElapsedWaitTime() {
@@ -194,12 +196,31 @@ const handleUserSelection = (id) => {
   setSelectedUser(selectedUserProfile);
 }
 
+const handleRegisterClick = () => {
+ setShowSignUp(true);
+ setShowSignIn(false);
+ console.log('Register reached.');
+}
+
+const handleSignUp = () => {
+  setShowSignUp(false);
+}
 
 if (auth.currentUser == null) {
+
+  let currentUnsigned = null;
+
+  if (showSignUp) {
+    currentUnsigned = <SignUp onSignUp={handleSignUp}/>;
+  }
+  else if (showSignIn) {
+    currentUnsigned = <SignIn onSignIn={handleSignIn} onRegisterClick={handleRegisterClick}/>
+  }
+
   return (
     <React.Fragment>
      <h2>Please sign in to access the logger.</h2>
-     <SignIn onSignIn={handleSignIn}/>
+     {currentUnsigned}
     </React.Fragment>
   );
 }
@@ -212,10 +233,8 @@ else if (auth.currentUser != null) {
     console.log(testBool);
 
     if (auth.currentUser.email === 'admin@11.com') {
-      if (showSignIn) {
-        <SignIn onSignIn={handleSignIn}/>
-      }
-      else if (selectedUser != null) {
+
+     if (selectedUser != null) {
         currentlyVisible=<AdminUserView userProfile={selectedUser}/>
         buttonText='Back to tasks';
       }
@@ -246,9 +265,13 @@ else if (auth.currentUser != null) {
     }
   }
   else {
-    if (showSignIn) {
-      <SignIn onSignIn={handleSignIn}/>
+    if (showSignUp) {
+      <SignUp onSignUp={handleSignUp}/>
     }
+   else if (showSignIn) {
+      <SignIn onSignIn={handleSignIn} onRegisterClick={handleRegisterClick}/>
+    }
+   
     else if (error) {
       currentlyVisible = <h4>There was an error: {error}!</h4>
       }
