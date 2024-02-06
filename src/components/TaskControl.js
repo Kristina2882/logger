@@ -10,9 +10,10 @@ import UserTaskView from './UserTaskView.js';
 import TaskListAdmin from './TaskListAdmin.js';
 import { formatDistanceToNow } from 'date-fns';
 import SignIn from './SignIn.js';
-import SignOut from './SignOut.js';
 import SignUp from './SignUp.js';
 import AdminUserView from './AdminUserView.js';
+import Header from './Header.js';
+import HeaderSignIn from './HeaderSignIn.js';
 
 
 function TaskControl() {
@@ -219,6 +220,7 @@ if (auth.currentUser == null) {
 
   return (
     <React.Fragment>
+      <Header/>
      <h2>Please sign in to access the logger.</h2>
      {currentUnsigned}
     </React.Fragment>
@@ -291,7 +293,7 @@ else if (auth.currentUser != null) {
   }
     return (
       <React.Fragment>
-         <SignOut onSignOut={handleSignOut}/>
+        <HeaderSignIn onSignOut={handleSignOut}/>
         {currentlyVisible}
        {error ? null : <button className='main-btn' onClick={handleClick}>{buttonText}</button>}
       </React.Fragment>

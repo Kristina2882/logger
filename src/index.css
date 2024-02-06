@@ -13,13 +13,22 @@ body {
   margin-top: 20px;
 }
 .header  {
+
+  padding-bottom: 20px;
+}
+
+ .header-title,
+.header ul.nav{
+  font-weight: 500;
+  font-size: 26px;
+  display: inline-block;
   margin-bottom: 20px;
 }
 
-.header .header-title,
-.header ul.nav li {
+.header .sign-btn {
   font-weight: 500;
-  font-size: 26px;
+  display: inline-block;
+  margin-bottom: 20px;
 }
 
 .header ul.nav {

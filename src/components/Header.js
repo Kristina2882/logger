@@ -11,9 +11,6 @@ export default function Header() {
        
         <ul className='nav'>
           <li>
-         Home
-          </li>
-          <li>
           Theme
           </li>
         </ul>
