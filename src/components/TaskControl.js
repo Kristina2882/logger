@@ -15,7 +15,6 @@ import AdminUserView from './AdminUserView.js';
 import Header from './Header.js';
 import HeaderSignIn from './HeaderSignIn.js';
 
-
 function TaskControl() {
   const [showForm, setShowForm] = useState(false);
   const [mainTaskList, setMainTaskList] = useState([]);
@@ -28,6 +27,7 @@ function TaskControl() {
   const [showSignIn, setShowSignIn] = useState(true);
   const [selectedUser, setSelectedUser] = useState(null);
   const [showSignUp, setShowSignUp] = useState(false);
+
 
   useEffect(() => {
    function updateLogElapsedWaitTime() {
@@ -230,10 +230,6 @@ else if (auth.currentUser != null) {
     let currentlyVisible = null;
     let buttonText = null;
 
-    console.log(auth.currentUser.email);
-    let testBool = auth.currentUser.email === 'admin@11.com';
-    console.log(testBool);
-
     if (auth.currentUser.email === 'admin@11.com') {
 
      if (selectedUser != null) {
@@ -293,7 +289,7 @@ else if (auth.currentUser != null) {
   }
     return (
       <React.Fragment>
-        <HeaderSignIn onSignOut={handleSignOut}/>
+        <HeaderSignIn onSignOut={handleSignOut} activeUser={auth.currentUser.email} />
         {currentlyVisible}
        {error ? null : <button className='main-btn' onClick={handleClick}>{buttonText}</button>}
       </React.Fragment>

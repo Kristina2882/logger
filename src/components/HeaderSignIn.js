@@ -5,6 +5,8 @@ import PropTypes from 'prop-types';
 
 export default function HeaderSignIn(props) {
 
+
+
     return (
       <div className='header'>
         <span className='header-title'>
@@ -13,7 +15,7 @@ export default function HeaderSignIn(props) {
        
         <ul className='nav'>
           <li>
-          User Profile
+        {props.activeUser}
           </li>
           <li>
           Theme
@@ -27,5 +29,6 @@ export default function HeaderSignIn(props) {
   }
 
   HeaderSignIn.propTypes = {
-    onSignOut: PropTypes.func
+    onSignOut: PropTypes.func,
+    activeUser: PropTypes.string
   }
