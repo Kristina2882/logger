@@ -27,6 +27,7 @@ function TaskControl() {
   const [showSignIn, setShowSignIn] = useState(true);
   const [selectedUser, setSelectedUser] = useState(null);
   const [showSignUp, setShowSignUp] = useState(false);
+  const [activeUser, setActiveUser] = useState(null);
 
 
   useEffect(() => {
@@ -185,11 +186,13 @@ const handleLogDelete = async (id) => {
 }
 
 const handleSignIn = () => {
+ setActiveUser(auth.currentUser.email);
  setShowSignIn(false);
 }
 
 const handleSignOut = () => {
   setShowSignIn(true);
+  setActiveUser(null);
 }
 
 const handleUserSelection = (id) => {
@@ -204,10 +207,11 @@ const handleRegisterClick = () => {
 }
 
 const handleSignUp = () => {
+  setActiveUser(auth.currentUser.email);
   setShowSignUp(false);
 }
 
-if (auth.currentUser == null) {
+if (!activeUser) {
 
   let currentUnsigned = null;
 
@@ -226,7 +230,7 @@ if (auth.currentUser == null) {
     </React.Fragment>
   );
 }
-else if (auth.currentUser != null) {
+else if (activeUser) {
     let currentlyVisible = null;
     let buttonText = null;
 
@@ -289,7 +293,7 @@ else if (auth.currentUser != null) {
   }
     return (
       <React.Fragment>
-        <HeaderSignIn onSignOut={handleSignOut} activeUser={auth.currentUser.email} />
+        <HeaderSignIn onSignOut={handleSignOut} activeUser={activeUser} userList={userList}/>
         {currentlyVisible}
        {error ? null : <button className='main-btn' onClick={handleClick}>{buttonText}</button>}
       </React.Fragment>

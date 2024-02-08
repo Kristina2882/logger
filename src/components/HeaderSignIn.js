@@ -5,7 +5,10 @@ import PropTypes from 'prop-types';
 
 export default function HeaderSignIn(props) {
 
-
+   const userName = props.activeUser;
+   const user = props.userList.filter(user => user.name === userName)[0];
+  
+   
 
     return (
       <div className='header'>
@@ -15,7 +18,7 @@ export default function HeaderSignIn(props) {
        
         <ul className='nav'>
           <li>
-        {props.activeUser}
+        {user.firstName} {user.surname}
           </li>
           <li>
           Theme
@@ -30,5 +33,6 @@ export default function HeaderSignIn(props) {
 
   HeaderSignIn.propTypes = {
     onSignOut: PropTypes.func,
-    activeUser: PropTypes.string
+    activeUser: PropTypes.string,
+    userList: PropTypes.array
   }
