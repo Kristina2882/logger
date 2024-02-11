@@ -246,9 +246,9 @@ body {
 }
 
 .admin-user-list,
-.admin-tasks,
-.sign-out{
+.admin-tasks{
 display: inline-table;
+padding-top: 20px;
 }
 
 
@@ -263,9 +263,8 @@ display: inline-table;
 }
 
 .admin-user-list{
-  float: right;
-  padding-left: 350px;
-  align-content:end;
+float:right;
+
 }
 .log-number {
   padding-top: 15px;

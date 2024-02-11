@@ -14,11 +14,12 @@ function SignIn(props) {
         .then((userCredential) => {
             setSignInSuccess(`You have successfully signed in, ${userCredential.user.email}!`);
             props.onSignIn();
-
         })
         .catch((error) => {
             setSignInSuccess(`There was an error when sign in: ${error.message}!`);
         })
+
+        
     }
 
     return (

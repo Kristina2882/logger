@@ -7,8 +7,6 @@ export default function HeaderSignIn(props) {
 
    const userName = props.activeUser;
    const user = props.userList.filter(user => user.name === userName)[0];
-  
-   
 
     return (
       <div className='header'>
@@ -17,7 +15,7 @@ export default function HeaderSignIn(props) {
         </span>
        
         <ul className='nav'>
-          <li>
+          <li onClick={() => props.onNameClick()}>
         {user.firstName} {user.surname}
           </li>
           <li>
@@ -34,5 +32,6 @@ export default function HeaderSignIn(props) {
   HeaderSignIn.propTypes = {
     onSignOut: PropTypes.func,
     activeUser: PropTypes.string,
-    userList: PropTypes.array
+    userList: PropTypes.array,
+    onNameClick: PropTypes.func
   }

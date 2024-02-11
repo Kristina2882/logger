@@ -14,6 +14,7 @@ import SignUp from './SignUp.js';
 import AdminUserView from './AdminUserView.js';
 import Header from './Header.js';
 import HeaderSignIn from './HeaderSignIn.js';
+import UserProfile from './UserProfile.js';
 
 function TaskControl() {
   const [showForm, setShowForm] = useState(false);
@@ -28,6 +29,7 @@ function TaskControl() {
   const [selectedUser, setSelectedUser] = useState(null);
   const [showSignUp, setShowSignUp] = useState(false);
   const [activeUser, setActiveUser] = useState(null);
+  const [showProfile, setShowProfile] = useState(false);
 
 
   useEffect(() => {
@@ -157,6 +159,9 @@ function TaskControl() {
     else if (selectedUser != null) {
       setSelectedUser(null);
     }
+    else if (showProfile) {
+      setShowProfile(false);
+    }
     else {
       setShowForm(!showForm);
   }
@@ -186,8 +191,9 @@ const handleLogDelete = async (id) => {
 }
 
 const handleSignIn = () => {
- setActiveUser(auth.currentUser.email);
  setShowSignIn(false);
+ setActiveUser(auth.currentUser.email);
+ console.log(activeUser);
 }
 
 const handleSignOut = () => {
@@ -206,9 +212,15 @@ const handleRegisterClick = () => {
  console.log('Register reached.');
 }
 
-const handleSignUp = () => {
-  setActiveUser(auth.currentUser.email);
+const handleSignUp = async (newUser) => {
+  await addDoc(collection(db, 'users'), newUser);
   setShowSignUp(false);
+  setActiveUser(newUser.name);
+  console.log(activeUser);
+}
+
+const handleShowProfile = () => {
+  setShowProfile(true);
 }
 
 if (!activeUser) {
@@ -235,8 +247,13 @@ else if (activeUser) {
     let buttonText = null;
 
     if (auth.currentUser.email === 'admin@11.com') {
+     
+      if (showProfile) {
+        currentlyVisible = <UserProfile activeUser={activeUser} userList={userList}/>
+        buttonText='Back to tasks';
+      }
 
-     if (selectedUser != null) {
+     else if (selectedUser != null) {
         currentlyVisible=<AdminUserView userProfile={selectedUser}/>
         buttonText='Back to tasks';
       }
@@ -267,7 +284,11 @@ else if (activeUser) {
     }
   }
   else {
-    if (showSignUp) {
+    if (showProfile) {
+      currentlyVisible = <UserProfile activeUser={activeUser} userList={userList}/>
+      buttonText='Back to tasks';
+    }
+    else if (showSignUp) {
       <SignUp onSignUp={handleSignUp}/>
     }
    else if (showSignIn) {
@@ -293,7 +314,7 @@ else if (activeUser) {
   }
     return (
       <React.Fragment>
-        <HeaderSignIn onSignOut={handleSignOut} activeUser={activeUser} userList={userList}/>
+        <HeaderSignIn onSignOut={handleSignOut} activeUser={activeUser} userList={userList} onNameClick={handleShowProfile}/>
         {currentlyVisible}
        {error ? null : <button className='main-btn' onClick={handleClick}>{buttonText}</button>}
       </React.Fragment>
