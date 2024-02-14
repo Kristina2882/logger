@@ -15,6 +15,7 @@ import AdminUserView from './AdminUserView.js';
 import Header from './Header.js';
 import HeaderSignIn from './HeaderSignIn.js';
 import UserProfile from './UserProfile.js';
+import NewProjectForm from './NewProjectForm.js';
 
 function TaskControl() {
   const [showForm, setShowForm] = useState(false);
@@ -30,7 +31,8 @@ function TaskControl() {
   const [showSignUp, setShowSignUp] = useState(false);
   const [activeUser, setActiveUser] = useState(null);
   const [showProfile, setShowProfile] = useState(false);
-
+  const [projectList, setProjectList] = useState([]);
+  const [showNewProjectForm, setShowNewProjectForm] = useState(false);
 
   useEffect(() => {
    function updateLogElapsedWaitTime() {
@@ -162,6 +164,9 @@ function TaskControl() {
     else if (showProfile) {
       setShowProfile(false);
     }
+    else if (showNewProjectForm) {
+      setShowNewProjectForm(false);
+    }
     else {
       setShowForm(!showForm);
   }
@@ -223,6 +228,10 @@ const handleShowProfile = () => {
   setShowProfile(true);
 }
 
+const handleAddProjectClick = () => {
+  setShowNewProjectForm(true);
+}
+
 if (!activeUser) {
 
   let currentUnsigned = null;
@@ -247,8 +256,13 @@ else if (activeUser) {
     let buttonText = null;
 
     if (auth.currentUser.email === 'admin@11.com') {
+
+      if (showNewProjectForm) {
+        currentlyVisible= <NewProjectForm/>
+        buttonText='Back to tasks';
+      }
      
-      if (showProfile) {
+     else if (showProfile) {
         currentlyVisible = <UserProfile activeUser={activeUser} userList={userList}/>
         buttonText='Back to tasks';
       }
@@ -279,7 +293,8 @@ else if (activeUser) {
       }
    
       else {
-        currentlyVisible=<TaskListAdmin taskList={mainTaskList} onTaskSelection={handleChangeSelectedTask} userList={userList} loglist={logs} onUserSelection={handleUserSelection}/>
+        currentlyVisible=<TaskListAdmin taskList={mainTaskList} onTaskSelection={handleChangeSelectedTask} userList={userList} loglist={logs} 
+        onUserSelection={handleUserSelection} projects = {projectList} onAddProjectClick={handleAddProjectClick}/>
         buttonText='Add new task';
     }
   }
@@ -308,7 +323,7 @@ else if (activeUser) {
       }
    
       else {
-        currentlyVisible=<TaskList taskList={mainTaskList} onTaskSelection={handleChangeSelectedTask} userName={auth.currentUser.email} loglist={logs}/>
+        currentlyVisible=<TaskList taskList={mainTaskList} onTaskSelection={handleChangeSelectedTask} userName={auth.currentUser.email} loglist={logs} projects = {projectList}/>
         buttonText='Add new task';
     }
   }

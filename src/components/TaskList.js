@@ -26,5 +26,6 @@ TaskList.propTypes = {
     taskList: PropTypes.array,
     onTaskClick: PropTypes.func,
     userName: PropTypes.string,
-    loglist: PropTypes.array
+    loglist: PropTypes.array,
+    projects: PropTypes.array
 }

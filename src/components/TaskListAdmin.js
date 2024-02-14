@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import TaskInList from "./TaskInList";
 import PropTypes from "prop-types";
 import UserInList from "./UserInList";
+import ProjectInList from "./ProjectInList";
 
 export default function TaskListAdmin(props) {
   const [taskList, setTaskList] = useState(props.taskList);
@@ -18,6 +19,13 @@ export default function TaskListAdmin(props) {
 
   return (
     <React.Fragment>
+      <div className="projects-list">
+        <h2>All Projects</h2>
+        {props.projects.map((project) => {
+          <ProjectInList project={project}/>
+        })}
+        <button className="add-project" onClick={() => props.onAddProjectClick()}>Add project</button>
+      </div>
       <div className="admin-tasks">
       <h2>All Tasks</h2>
       <form className="filter-form" onSubmit={filterByResponsible}>
@@ -63,5 +71,7 @@ TaskListAdmin.propTypes = {
   onTaskClick: PropTypes.func,
   userList: PropTypes.array,
   loglist: PropTypes.array,
-  onUserSelection: PropTypes.func
+  onUserSelection: PropTypes.func,
+  projects: PropTypes.array,
+  onAddProjectClick: PropTypes.func
 };

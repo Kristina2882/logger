@@ -102,7 +102,8 @@ body {
 .add-log-btn,
 .log-btn,
 .sign-btn,
-.btn-filter-form
+.btn-filter-form,
+.add-project
  {
   display: block;
   background: #d594a1;
@@ -141,7 +142,8 @@ body {
 .add-log-btn:hover,
 .log-btn:hover,
 .sign-btn:hover,
-.btn-filter-form:hover  {
+.btn-filter-form:hover,
+.add-project:hover  {
   transform: scale(1.1);
   background: #c27181;
   color: #261216;
@@ -246,7 +248,8 @@ body {
 }
 
 .admin-user-list,
-.admin-tasks{
+.admin-tasks,
+.projects-list{
 display: inline-table;
 padding-top: 20px;
 }
