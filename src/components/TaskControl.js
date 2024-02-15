@@ -31,7 +31,7 @@ function TaskControl() {
   const [showSignUp, setShowSignUp] = useState(false);
   const [activeUser, setActiveUser] = useState(null);
   const [showProfile, setShowProfile] = useState(false);
-  const [projectList, setProjectList] = useState([]);
+  const [projectList, setProjectList] = useState([{id:1, name: 'test project'}, {id:2, name: 'test project -2'}, {id:3, name: 'test project - 3'}]);
   const [showNewProjectForm, setShowNewProjectForm] = useState(false);
 
   useEffect(() => {

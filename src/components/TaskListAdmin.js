@@ -21,9 +21,9 @@ export default function TaskListAdmin(props) {
     <React.Fragment>
       <div className="projects-list">
         <h2>All Projects</h2>
-        {props.projects.map((project) => {
-          <ProjectInList project={project}/>
-        })}
+        {props.projects.map((project) => 
+         (<ProjectInList project={project}/>) 
+        )}
         <button className="add-project" onClick={() => props.onAddProjectClick()}>Add project</button>
       </div>
       <div className="admin-tasks">
