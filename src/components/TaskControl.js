@@ -31,7 +31,7 @@ function TaskControl() {
   const [showSignUp, setShowSignUp] = useState(false);
   const [activeUser, setActiveUser] = useState(null);
   const [showProfile, setShowProfile] = useState(false);
-  const [projectList, setProjectList] = useState([{id:1, name: 'test project'}, {id:2, name: 'test project -2'}, {id:3, name: 'test project - 3'}]);
+  const [projectList, setProjectList] = useState([]);
   const [showNewProjectForm, setShowNewProjectForm] = useState(false);
 
   useEffect(() => {
@@ -98,6 +98,27 @@ function TaskControl() {
     });
     return () => unsubscribe();
   },[]);
+
+  useEffect(() => {
+    const unsubscribe = onSnapshot(
+      collection(db, 'projects'),
+      (collectionSnapShot) => {
+        const projects = [];
+        collectionSnapShot.forEach((doc) => {
+          projects.push({
+            name: doc.data().name,
+            deadline: doc.data().deadline,
+            id: doc.id
+          });
+        });
+        setProjectList(projects);
+  
+      },
+      (error) => {
+       setError(error.message);
+      });
+      return () => unsubscribe();
+    },[]);
 
   useEffect(() => {
     const queryByTimestamp = query(
@@ -232,6 +253,11 @@ const handleAddProjectClick = () => {
   setShowNewProjectForm(true);
 }
 
+const handleAddingNewProject = async (newProject) => {
+ await addDoc(collection(db, 'projects'), newProject);
+ setShowNewProjectForm(false);
+}
+
 if (!activeUser) {
 
   let currentUnsigned = null;
@@ -258,7 +284,7 @@ else if (activeUser) {
     if (auth.currentUser.email === 'admin@11.com') {
 
       if (showNewProjectForm) {
-        currentlyVisible= <NewProjectForm/>
+        currentlyVisible= <NewProjectForm onNewProjectCreation={handleAddingNewProject}/>
         buttonText='Back to tasks';
       }
      

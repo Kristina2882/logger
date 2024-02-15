@@ -1,9 +1,15 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-export default function NewProjectForm() {
+export default function NewProjectForm(props) {
 
     function handleNewProjectSubmission(event) {
         event.preventDefault();
+
+        props.onNewProjectCreation({
+            name: event.target.projectName.value,
+            deadLine: event.target.projectDeadLine.value
+        })
 
     }
     return (
@@ -24,4 +30,7 @@ export default function NewProjectForm() {
             </form>
         </React.Fragment>
     );
+}
+NewProjectForm.propTypes = {
+    onNewProjectCreation: PropTypes.func
 }
