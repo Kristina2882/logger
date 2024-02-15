@@ -69,7 +69,8 @@ body {
   position: absolute;
 }
 .task-in-list-gen  .task-in-list,
-.user-in-list{
+.user-in-list,
+.project-in-list{
   position: relative;
   display: inline-block;
   margin-top: 10px;
@@ -80,7 +81,8 @@ body {
   transition: color transform 500ms ease;
 }
 
-.user-in-list {
+.user-in-list,
+.project-in-list {
   display: block;
   padding: 0px;
 }
@@ -90,7 +92,8 @@ body {
 }
 
 .task-in-list-gen  .task-in-list:hover,
-.user-in-list:hover {
+.user-in-list:hover,
+.project-in-list:hover {
   transform: scale(1.1);
   color: #c27181;
 }
@@ -254,15 +257,25 @@ display: inline-table;
 padding-top: 20px;
 }
 
+.projects-list {
+  width: 15%;
+}
+
+.admin-user-list {
+  width: 15%;
+}
+.admin-tasks {
+  width: 40%;
+}
+
 
 .admin-user-list ul.user-list {
   list-style: none;
-  display:block;
- 
 }
 
 .admin-user-list ul.user-list li {
   padding-top: 10px;
+  display:block;
 }
 
 .admin-user-list{
