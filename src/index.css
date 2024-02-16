@@ -107,7 +107,8 @@ body {
 .sign-btn,
 .btn-filter-form,
 .add-project,
-.add-project-btn
+.add-project-btn,
+.add-task-btn
  {
   display: block;
   background: #d594a1;
@@ -148,7 +149,8 @@ body {
 .sign-btn:hover,
 .btn-filter-form:hover,
 .add-project:hover,
-.add-project-btn:hover  {
+.add-project-btn:hover,
+.add-task-btn:hover  {
   transform: scale(1.1);
   background: #c27181;
   color: #261216;
@@ -203,12 +205,14 @@ body {
   font-size: 22px;
 }
 .task h2,
-.user-profile h2 {
+.user-profile h2,
+.project h2 {
  margin-bottom: 10px;
  font-size: 24px;
 }
 .task h3,
-.user-profile h3 {
+.user-profile h3,
+.project h3 {
   margin: 10px 0px;
   font-size: 20px;
   margin-bottom: 15px;

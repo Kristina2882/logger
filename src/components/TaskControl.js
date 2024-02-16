@@ -194,7 +194,7 @@ function TaskControl() {
     else if (showNewProjectForm) {
       setShowNewProjectForm(false);
     }
-    else {
+    else  {
       setShowForm(!showForm);
   }
 }
@@ -269,6 +269,11 @@ const selectedProject = projectList.filter(project => project.id === projectId)[
 setSelectedProject(selectedProject);
 }
 
+const handleAddTaskInProjectClick = () => {
+  setShowForm(true);
+  setSelectedProject(null);
+}
+
 if (!activeUser) {
 
   let currentUnsigned = null;
@@ -296,7 +301,7 @@ else if (activeUser) {
     if (auth.currentUser.email === 'admin@11.com') {
 
       if (selectedProject != null) {
-        currentlyVisible= <ProjectAdminView project={selectedProject}/>
+        currentlyVisible= <ProjectAdminView project={selectedProject} onAddNewTaskClick={handleAddTaskInProjectClick}/>
         buttonText='Back to tasks';
       }
 
