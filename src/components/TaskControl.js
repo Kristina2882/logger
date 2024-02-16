@@ -280,6 +280,7 @@ if (!activeUser) {
 else if (activeUser) {
     let currentlyVisible = null;
     let buttonText = null;
+    let buttonVisible = true;
 
     if (auth.currentUser.email === 'admin@11.com') {
 
@@ -351,13 +352,14 @@ else if (activeUser) {
       else {
         currentlyVisible=<TaskList taskList={mainTaskList} onTaskSelection={handleChangeSelectedTask} userName={auth.currentUser.email} loglist={logs} projects = {projectList}/>
         buttonText='Add new task';
+        buttonVisible = false;
     }
   }
     return (
       <React.Fragment>
         <HeaderSignIn onSignOut={handleSignOut} activeUser={activeUser} userList={userList} onNameClick={handleShowProfile}/>
         {currentlyVisible}
-       {error ? null : <button className='main-btn' onClick={handleClick}>{buttonText}</button>}
+       {(error || !buttonVisible) ? null : <button className='main-btn' onClick={handleClick}>{buttonText}</button>}
       </React.Fragment>
     );
 }

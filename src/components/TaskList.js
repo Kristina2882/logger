@@ -1,6 +1,7 @@
 import React from 'react';
 import TaskInList from './TaskInList';
 import PropTypes from 'prop-types';
+import ProjectInList from './ProjectInList';
 
 export default function TaskList(props) {
 
@@ -8,6 +9,12 @@ export default function TaskList(props) {
 
   return (
     <React.Fragment>
+       <div className="projects-list">
+        <h2>All Projects</h2>
+        {props.projects.map((project) => 
+         (<ProjectInList project={project}/>) 
+        )}
+      </div>
       <div className='user-tasks'>
       <h2>Tasks for {props.userName}</h2>
     {
