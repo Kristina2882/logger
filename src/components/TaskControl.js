@@ -16,6 +16,7 @@ import Header from './Header.js';
 import HeaderSignIn from './HeaderSignIn.js';
 import UserProfile from './UserProfile.js';
 import NewProjectForm from './NewProjectForm.js';
+import ProjectAdminView from './ProjectAdminView.js';
 
 function TaskControl() {
   const [showForm, setShowForm] = useState(false);
@@ -33,6 +34,7 @@ function TaskControl() {
   const [showProfile, setShowProfile] = useState(false);
   const [projectList, setProjectList] = useState([]);
   const [showNewProjectForm, setShowNewProjectForm] = useState(false);
+  const [selectedProject, setSelectedProject] = useState(null);
 
   useEffect(() => {
    function updateLogElapsedWaitTime() {
@@ -107,7 +109,7 @@ function TaskControl() {
         collectionSnapShot.forEach((doc) => {
           projects.push({
             name: doc.data().name,
-            deadline: doc.data().deadline,
+            deadLine: doc.data().deadLine,
             id: doc.id
           });
         });
@@ -178,6 +180,10 @@ function TaskControl() {
         setSelectedTask(null);
         setEditing(false);
         setLogging(false);
+    }
+    else if (selectedProject != null) {
+      setSelectedProject(null);
+      setShowForm(false);
     }
     else if (selectedUser != null) {
       setSelectedUser(null);
@@ -258,6 +264,11 @@ const handleAddingNewProject = async (newProject) => {
  setShowNewProjectForm(false);
 }
 
+const handleChangeSelectedProject = (projectId) => {
+const selectedProject = projectList.filter(project => project.id === projectId)[0];
+setSelectedProject(selectedProject);
+}
+
 if (!activeUser) {
 
   let currentUnsigned = null;
@@ -284,7 +295,12 @@ else if (activeUser) {
 
     if (auth.currentUser.email === 'admin@11.com') {
 
-      if (showNewProjectForm) {
+      if (selectedProject != null) {
+        currentlyVisible= <ProjectAdminView project={selectedProject}/>
+        buttonText='Back to tasks';
+      }
+
+      else if (showNewProjectForm) {
         currentlyVisible= <NewProjectForm onNewProjectCreation={handleAddingNewProject}/>
         buttonText='Back to tasks';
       }
@@ -321,7 +337,7 @@ else if (activeUser) {
    
       else {
         currentlyVisible=<TaskListAdmin taskList={mainTaskList} onTaskSelection={handleChangeSelectedTask} userList={userList} loglist={logs} 
-        onUserSelection={handleUserSelection} projects = {projectList} onAddProjectClick={handleAddProjectClick}/>
+        onUserSelection={handleUserSelection} projects = {projectList} onAddProjectClick={handleAddProjectClick} onProjectSelection={handleChangeSelectedProject}/>
         buttonText='Add new task';
     }
   }
@@ -350,7 +366,8 @@ else if (activeUser) {
       }
    
       else {
-        currentlyVisible=<TaskList taskList={mainTaskList} onTaskSelection={handleChangeSelectedTask} userName={auth.currentUser.email} loglist={logs} projects = {projectList}/>
+        currentlyVisible=<TaskList taskList={mainTaskList} onTaskSelection={handleChangeSelectedTask} userName={auth.currentUser.email} loglist={logs} 
+        projects = {projectList} onProjectSelection={handleChangeSelectedProject}/>
         buttonText='Add new task';
         buttonVisible = false;
     }

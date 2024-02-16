@@ -21,8 +21,9 @@ export default function TaskListAdmin(props) {
     <React.Fragment>
       <div className="projects-list">
         <h2>All Projects</h2>
+
         {props.projects.map((project) => 
-         (<ProjectInList project={project}/>) 
+         (<ProjectInList project={project}  onProjectClick = {props.onProjectSelection}/>) 
         )}
         <button className="add-project" onClick={() => props.onAddProjectClick()}>Add project</button>
       </div>
@@ -73,5 +74,6 @@ TaskListAdmin.propTypes = {
   loglist: PropTypes.array,
   onUserSelection: PropTypes.func,
   projects: PropTypes.array,
-  onAddProjectClick: PropTypes.func
+  onAddProjectClick: PropTypes.func,
+  onProjectSelection: PropTypes.func
 };
