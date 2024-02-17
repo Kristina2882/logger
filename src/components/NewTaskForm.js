@@ -9,6 +9,7 @@ export default function NewTaskForm(props) {
      props.onNewTaskCreation({
         name: event.target.name.value,
         description: event.target.description.value,
+        taskProject: event.target.taskProject.value,
         taskCreated: event.target.taskCreated.value,
         taskDeadline: event.target.taskDeadline.value,
         taskResponsible: event.target.taskResponsible.value
@@ -20,6 +21,7 @@ export default function NewTaskForm(props) {
      buttonText = 'Add new task'
      handleFormSubmission = {handleNewTask}
      userList={props.userList}
+     projectList={props.projectList}
      />
     </React.Fragment>
   )
@@ -27,5 +29,6 @@ export default function NewTaskForm(props) {
 
 NewTaskForm.propTypes = {
     onNewTaskCreation: PropTypes.func,
-    userList: PropTypes.array
+    userList: PropTypes.array,
+    projectList: PropTypes.array
 }

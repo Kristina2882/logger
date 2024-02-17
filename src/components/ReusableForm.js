@@ -11,6 +11,12 @@ export default function ReusableForm(props) {
             type="text"
             placeholder="Enter task description"
           />
+           <select name="taskProject">
+            {props.projectList.map((project) => (
+              <option value={project.name}>{project.name}</option>
+            ))
+            }
+           </select>
           <input
             name="taskCreated"
             type="date"
@@ -38,5 +44,6 @@ export default function ReusableForm(props) {
 ReusableForm.propTypes = {
     buttonText: PropTypes.string,
     handleFormSubmission: PropTypes.func,
-    userList: PropTypes.array
+    userList: PropTypes.array,
+    projectList: PropTypes.array
 }

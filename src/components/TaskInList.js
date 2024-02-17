@@ -21,6 +21,7 @@ export default function TaskInList(props) {
     <div onClick={() => props.onTaskClick(props.task.id)} className='task-in-list'>
     <h3>{props.task.name}</h3>
     <h5><em>Responsible: </em>{props.task.taskResponsible}</h5>
+    <h5><em>Project:</em> {props.task.taskProject}</h5>
     <h5><em>Created on: </em>{props.task.taskCreated}</h5>
     <h5><em>Deadline: </em>{props.task.taskDeadline}</h5>
     <h5><em>Log updated: </em>{logUpd} </h5>

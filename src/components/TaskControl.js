@@ -89,6 +89,7 @@ function TaskControl() {
           taskCreated: doc.data().taskCreated,
           taskDeadline: doc.data().taskDeadline,
           taskResponsible: doc.data().taskResponsible,
+          taskProject: doc.data().taskProject,
           id: doc.id
         });
       });
@@ -320,11 +321,11 @@ else if (activeUser) {
         buttonText='Back to tasks';
       }
       else if (editing) {
-       currentlyVisible = <EditTaskForm task = {selectedTask} onEditTask={handleEditTaskInList} userList={userList}/>
+       currentlyVisible = <EditTaskForm task = {selectedTask} onEditTask={handleEditTaskInList} userList={userList} projectList={projectList}/>
        buttonText='Back to tasks';
       }
       else if (showForm) {
-       currentlyVisible = <NewTaskForm onNewTaskCreation={handleAddingNewTask} userList={userList}/>
+       currentlyVisible = <NewTaskForm onNewTaskCreation={handleAddingNewTask} userList={userList} projectList={projectList}/>
        buttonText='Back to tasks';
       }
  

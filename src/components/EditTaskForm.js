@@ -10,6 +10,7 @@ export default function EditTaskForm(props) {
         props.onEditTask({
             name: event.target.name.value,
             description: event.target.description.value,
+            taskProject: event.target.taskProject.value,
             taskCreated: event.target.taskCreated.value,
             taskDeadline: event.target.taskDeadline.value,
             taskResponsible: event.target.taskResponsible.value,
@@ -24,6 +25,7 @@ export default function EditTaskForm(props) {
             buttonText='Save changes'
             handleFormSubmission={handleEditTask}
             userList={props.userList}
+            projectList={props.projectList}
             />
         </React.Fragment>
     );
@@ -32,5 +34,6 @@ export default function EditTaskForm(props) {
 EditTaskForm.propTypes = {
     task: PropTypes.object,
     onEditTask: PropTypes.func,
-    userList: PropTypes.array
+    userList: PropTypes.array,
+    projectList: PropTypes.array
 }
