@@ -59,9 +59,9 @@ body {
 }
 
 .main {
-  width: 1400px;
+  width: 1600px;
   height: 100%;
-  margin: 30px auto;
+  margin: 20px auto;
 }
 
 .control {
@@ -270,10 +270,11 @@ body {
 .projects-list{
 display: inline-table;
 padding-top: 20px;
+position: relative;
 }
 
 .projects-list {
-  width: 15%;
+  width: 25%;
 }
 
 .admin-user-list {
@@ -281,7 +282,7 @@ padding-top: 20px;
 }
 .admin-tasks,
 .user-tasks {
-  width: 40%;
+  width: 20%;
 }
 
 
@@ -302,7 +303,8 @@ float:right;
   padding-top: 15px;
 }
 
-.task-in-list-gen .counter {
+.task-in-list-gen .counter,
+.project-in-list .counter {
   float:right;
   display: inline;
   position: relative;
@@ -315,7 +317,8 @@ float:right;
   border-radius: 40px;
 }
 
-.task-in-list-gen .counter h5 {
+.task-in-list-gen .counter h5,
+.project-in-list .counter h5 {
   text-align:center;
   padding-top: 10px;
 }

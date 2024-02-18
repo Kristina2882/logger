@@ -23,7 +23,7 @@ export default function TaskListAdmin(props) {
         <h2>All Projects</h2>
 
         {props.projects.map((project) => 
-         (<ProjectInList project={project}  onProjectClick = {props.onProjectSelection}/>) 
+         (<ProjectInList project={project}  onProjectClick = {props.onProjectSelection} taskList={props.taskList}/>) 
         )}
         <button className="add-project" onClick={() => props.onAddProjectClick()}>Add project</button>
       </div>

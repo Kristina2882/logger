@@ -173,6 +173,7 @@ function TaskControl() {
  const handleChangeSelectedTask = (id) => {
     const task = mainTaskList.filter(task => task.id === id)[0];
     setSelectedTask(task);
+    setSelectedProject(null);
  }
 
   const handleClick = () => {
@@ -181,6 +182,7 @@ function TaskControl() {
         setSelectedTask(null);
         setEditing(false);
         setLogging(false);
+        setSelectedProject(null);
     }
     else if (selectedProject != null) {
       setSelectedProject(null);
@@ -302,7 +304,8 @@ else if (activeUser) {
     if (auth.currentUser.email === 'admin@11.com') {
 
       if (selectedProject != null) {
-        currentlyVisible= <ProjectAdminView project={selectedProject} onAddNewTaskClick={handleAddTaskInProjectClick}/>
+        currentlyVisible= <ProjectAdminView project={selectedProject} onAddNewTaskClick={handleAddTaskInProjectClick} taskList={mainTaskList}
+        onTaskSelection={handleChangeSelectedTask} loglist={logs} />
         buttonText='Back to tasks';
       }
 
@@ -343,7 +346,7 @@ else if (activeUser) {
    
       else {
         currentlyVisible=<TaskListAdmin taskList={mainTaskList} onTaskSelection={handleChangeSelectedTask} userList={userList} loglist={logs} 
-        onUserSelection={handleUserSelection} projects = {projectList} onAddProjectClick={handleAddProjectClick} onProjectSelection={handleChangeSelectedProject}/>
+        onUserSelection={handleUserSelection} projects = {projectList} onAddProjectClick={handleAddProjectClick} onProjectSelection={handleChangeSelectedProject} />
         buttonText='Add new task';
     }
   }
