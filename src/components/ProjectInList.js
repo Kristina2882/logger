@@ -14,11 +14,13 @@ export default function ProjectInList(props) {
 
     return (
         <React.Fragment>
+            <div className="project-in-list-gen">
             <div className="project-in-list" onClick={() => props.onProjectClick(props.project.id)}>
             <h4>{props.project.name}</h4>
             </div>
             <div className='counter'><h5>{counter}
     </h5></div>
+    </div>
         </React.Fragment>
     );
 }

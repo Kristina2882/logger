@@ -19,6 +19,7 @@ export default function TaskListAdmin(props) {
 
   return (
     <React.Fragment>
+      <div className="admin-main">
       <div className="projects-list">
         <h2>All Projects</h2>
 
@@ -62,7 +63,7 @@ export default function TaskListAdmin(props) {
           }      
           
         </div> 
-      
+        </div>
     </React.Fragment>
   );
 }
