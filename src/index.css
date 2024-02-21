@@ -75,7 +75,7 @@ body {
   padding: 20px;
   position: absolute;
 }
-.task-in-list-gen  .task-in-list,
+.task-in-list-gen,
 .user-in-list,
 .project-in-list-gen .project-in-list{
   position: relative;
@@ -98,7 +98,7 @@ body {
  padding-top: 9px;
 }
 
-.task-in-list-gen  .task-in-list:hover,
+.task-in-list-gen:hover,
 .user-in-list:hover,
 .project-in-list-gen .project-in-list:hover {
   transform: scale(1.1);
@@ -108,7 +108,9 @@ body {
 .main-btn,
 .form-btn,
 .edit-btn,
+.edit-project-btn,
 .delete-btn,
+.delete-project-btn,
 .add-log-btn,
 .log-btn,
 .sign-btn,
@@ -134,15 +136,18 @@ body {
 
 .edit-btn,
 .delete-btn,
+.delete-project-btn,
 .add-log-btn,
-.log-btn {
+.log-btn,
+.edit-project-btn {
   display: inline;
   margin-right: 15px;
   font-size: 16px;
   padding: 8px;
 }
 
-.delete-btn {
+.delete-btn,
+.delete-project-btn {
   background: rgb(255, 13, 49);
   color: antiquewhite;
 }
@@ -157,7 +162,9 @@ body {
 .btn-filter-form:hover,
 .add-project:hover,
 .add-project-btn:hover,
-.add-task-btn:hover  {
+.add-task-btn:hover,
+.delete-project-btn:hover,
+.edit-project-btn:hover  {
   transform: scale(1.1);
   background: #c27181;
   color: #261216;
@@ -214,7 +221,8 @@ body {
 .task h2,
 .user-profile h2,
 .project h2 {
- margin-bottom: 10px;
+
+ margin-bottom: 20px;
  font-size: 24px;
 }
 .task h3,
@@ -299,17 +307,29 @@ body {
   padding-top: 15px;
 }
 
+.task-in-list-gen {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+}
+
+.task-in-list-gen .counter-div {
+  background: aqua;
+  width: 30%;
+  height: 20%;
+  top:8px;
+  float:right;
+  margin-left: auto;
+  position: absolute;
+}
+
 .task-in-list-gen .counter,
 .project-in-list-gen .counter {
-  float:right;
-  display: inline;
-  position: relative;
-  align-content:end;
+  float: right;
   background:#d594a1;
   color: #261216;
   height: 40px;
   width: 40px;
-  margin: 20px;
   border-radius: 40px;
 }
 
@@ -342,4 +362,30 @@ body {
 
 .user-profile h2 {
   padding-bottom: 20px;
+}
+
+.project {
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
+  margin-top: 15px;
+}
+
+.project .project-info {
+  width: 30%;
+  margin-right: auto;
+  float: left;
+}
+
+.project .tasks-of-project {
+  position: relative;
+  width: 80%;
+  margin-left: 80px;
+  margin-right: 10px;
+  float: right;
+  border: 1px solid;
+  border-color: rgb(213, 148, 161, 0.5);
+  padding: 15px;
+  padding-left: 50px;
+  border-radius: 9px;
 }
