@@ -9,10 +9,16 @@ export default function ProjectAdminView(props) {
     return (
         <React.Fragment>
             <div className="project">
-           <h2>{project.name}</h2> 
+            <div className="project-info">  
+           <h2>{project.name}</h2>
+           <h3>Start date: {project.startDate}</h3> 
            <h3>Project deadline: {project.deadLine}</h3> 
+           <button className="delete-project-btn">Delete</button>
+           <button className="edit-project-btn">Edit</button>
            <button className="add-task-btn" onClick={() => props.onAddNewTaskClick()}>Add new task</button>
-           <h3>Tasks</h3>
+           </div>  
+           <div className="tasks-of-project">
+           <h2>Tasks</h2>
             {
                 tasks.map((task) => (
                     <TaskInList
@@ -23,6 +29,7 @@ export default function ProjectAdminView(props) {
                   />
                 ))
             }
+            </div>
            </div>
         </React.Fragment>
 

@@ -17,8 +17,8 @@ export default function TaskInList(props) {
 
   return (
     <React.Fragment>
-    <div className='task-in-list-gen'>
-    <div onClick={() => props.onTaskClick(props.task.id)} className='task-in-list'>
+    <div className='task-in-list-gen' onClick={() => props.onTaskClick(props.task.id)} >
+    <div className='task-in-list'>
     <h3>{props.task.name}</h3>
     <h5><em>Responsible: </em>{props.task.taskResponsible}</h5>
     <h5><em>Project:</em> {props.task.taskProject}</h5>
@@ -26,8 +26,9 @@ export default function TaskInList(props) {
     <h5><em>Deadline: </em>{props.task.taskDeadline}</h5>
     <h5><em>Log updated: </em>{logUpd} </h5>
     </div>
+    <div className='counter-div'>
     <div className='counter'><h5>{counter}
-    </h5></div>
+    </h5></div></div>
     </div>
     </React.Fragment>
   )
