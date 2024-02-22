@@ -258,6 +258,7 @@ const handleSignUp = async (newUser) => {
 
 const handleShowProfile = () => {
   setShowProfile(true);
+  setSelectedProject(null);
 }
 
 const handleAddProjectClick = () => {
@@ -318,12 +319,12 @@ else if (activeUser) {
      
      else if (showProfile) {
         currentlyVisible = <UserProfile activeUser={activeUser} userList={userList}/>
-        buttonText='Back to tasks';
+        buttonText='< Home';
       }
 
      else if (selectedUser != null) {
         currentlyVisible=<AdminUserView userProfile={selectedUser}/>
-        buttonText='Back to tasks';
+        buttonText='< Home';
       }
       else if (editing) {
        currentlyVisible = <EditTaskForm task = {selectedTask} onEditTask={handleEditTaskInList} userList={userList} projectList={projectList}/>
@@ -355,7 +356,7 @@ else if (activeUser) {
   else {
     if (showProfile) {
       currentlyVisible = <UserProfile activeUser={activeUser} userList={userList}/>
-      buttonText='Back to tasks';
+      buttonText='< Home';;
     }
     else if (showSignUp) {
       <SignUp onSignUp={handleSignUp}/>
