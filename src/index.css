@@ -308,18 +308,16 @@ body {
 }
 
 .task-in-list-gen {
+  position: relative;
   display: flex;
   flex-direction: row;
-  position: relative;
 }
 
 .task-in-list-gen .counter-div {
-  background: aqua;
   width: 30%;
-  height: 20%;
-  top:8px;
   float:right;
-  margin-left: auto;
+  top:8px;
+  right: 25px;
   position: absolute;
 }
 
