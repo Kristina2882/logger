@@ -111,6 +111,8 @@ function TaskControl() {
           projects.push({
             name: doc.data().name,
             deadLine: doc.data().deadLine,
+            startDate: doc.data().startDate,
+            projectDescr: doc.data().projectDescr,
             id: doc.id
           });
         });
@@ -306,7 +308,7 @@ else if (activeUser) {
       if (selectedProject != null) {
         currentlyVisible= <ProjectAdminView project={selectedProject} onAddNewTaskClick={handleAddTaskInProjectClick} taskList={mainTaskList}
         onTaskSelection={handleChangeSelectedTask} loglist={logs} />
-        buttonText='Back to tasks';
+        buttonText='< Home';
       }
 
       else if (showNewProjectForm) {
@@ -384,8 +386,8 @@ else if (activeUser) {
     return (
       <React.Fragment>
         <HeaderSignIn onSignOut={handleSignOut} activeUser={activeUser} userList={userList} onNameClick={handleShowProfile}/>
+        {(error || !buttonVisible) ? null : <button className='main-btn' onClick={handleClick}>{buttonText}</button>}
         {currentlyVisible}
-       {(error || !buttonVisible) ? null : <button className='main-btn' onClick={handleClick}>{buttonText}</button>}
       </React.Fragment>
     );
 }

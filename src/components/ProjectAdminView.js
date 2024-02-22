@@ -11,6 +11,7 @@ export default function ProjectAdminView(props) {
             <div className="project">
             <div className="project-info">  
            <h2>{project.name}</h2>
+           <h3>{project.projectDescr}</h3>
            <h3>Start date: {project.startDate}</h3> 
            <h3>Project deadline: {project.deadLine}</h3> 
            <button className="delete-project-btn">Delete</button>

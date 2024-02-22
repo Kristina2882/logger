@@ -365,25 +365,24 @@ body {
 .project {
   display: flex;
   flex-direction: row;
-  gap: 40px;
   margin-top: 15px;
-}
-
-.project .project-info {
-  width: 30%;
-  margin-right: auto;
-  float: left;
+  position: relative;
+  width: 100%;
 }
 
 .project .tasks-of-project {
-  position: relative;
-  width: 80%;
-  margin-left: 80px;
-  margin-right: 10px;
+  position: absolute;
+  width: 50%;
+  right: 0px;
   float: right;
   border: 1px solid;
   border-color: rgb(213, 148, 161, 0.5);
   padding: 15px;
-  padding-left: 50px;
+  padding-left: 60px;
+  padding-right: 30px;
   border-radius: 9px;
+}
+
+.main-btn {
+  margin-bottom: 15px;
 }

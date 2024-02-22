@@ -9,7 +9,8 @@ export default function NewProjectForm(props) {
         props.onNewProjectCreation({
             name: event.target.projectName.value,
             deadLine: event.target.projectDeadLine.value,
-            startDate: event.target.projectStartDate.value
+            startDate: event.target.projectStartDate.value,
+            projectDescr: event.target.projectDescr.value
         })
 
     }
@@ -21,6 +22,11 @@ export default function NewProjectForm(props) {
              name='projectName'
              type='text'
              placeholder='Enter project name'
+             />
+             <input
+             name='projectDescr'
+             type='text'
+             placeholder='Enter project description'
              />
                <input
              name='projectStartDate'
