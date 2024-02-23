@@ -280,6 +280,19 @@ const handleAddTaskInProjectClick = () => {
   setSelectedProject(null);
 }
 
+const handleDeleteProject = async (id) => {
+  await deleteDoc(doc(db, 'projects', id));
+  const tasksToDelete = mainTaskList.filter(task=> task.taskProject=== id);
+  tasksToDelete.forEach((task) => {
+    handleDeleteTask(task.id);
+  });
+  setSelectedProject(null);
+}
+
+const handleEditProjectClick = () => {
+  console.log("Project edit reached!");
+}
+
 if (!activeUser) {
 
   let currentUnsigned = null;
@@ -308,7 +321,7 @@ else if (activeUser) {
 
       if (selectedProject != null) {
         currentlyVisible= <ProjectAdminView project={selectedProject} onAddNewTaskClick={handleAddTaskInProjectClick} taskList={mainTaskList}
-        onTaskSelection={handleChangeSelectedTask} loglist={logs} />
+        onTaskSelection={handleChangeSelectedTask} loglist={logs} onDeleteProject={handleDeleteProject} onEditProject = {handleEditProjectClick} />
         buttonText='< Home';
       }
 

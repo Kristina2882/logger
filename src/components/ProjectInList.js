@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 export default function ProjectInList(props) {
     let counter;
   
-    if (props.taskList.filter(task =>task.taskProject === props.project.name).length > 0) {
-       counter= props.taskList.filter(task =>task.taskProject === props.project.name).length;
+    if (props.taskList.filter(task =>task.taskProject === props.project.id).length > 0) {
+       counter= props.taskList.filter(task =>task.taskProject === props.project.id).length;
     }
   
     else {

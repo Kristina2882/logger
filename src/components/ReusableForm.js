@@ -13,7 +13,7 @@ export default function ReusableForm(props) {
           />
            <select name="taskProject">
             {props.projectList.map((project) => (
-              <option value={project.name}>{project.name}</option>
+              <option value={project.id}>{project.name}</option>
             ))
             }
            </select>

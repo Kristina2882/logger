@@ -4,7 +4,7 @@ import TaskInList from "./TaskInList";
 
 export default function ProjectAdminView(props) {
     const {project} = props;
-    const tasks = props.taskList.filter(task => task.taskProject === project.name);
+    const tasks = props.taskList.filter(task => task.taskProject === project.id);
 
     return (
         <React.Fragment>
@@ -14,8 +14,8 @@ export default function ProjectAdminView(props) {
            <h3>{project.projectDescr}</h3>
            <h3>Start date: {project.startDate}</h3> 
            <h3>Project deadline: {project.deadLine}</h3> 
-           <button className="delete-project-btn">Delete</button>
-           <button className="edit-project-btn">Edit</button>
+           <button className="delete-project-btn" onClick={()=> props.onDeleteProject(project.id)}>Delete</button>
+           <button className="edit-project-btn" onClick={()=> props.onEditProject()}>Edit</button>
            <button className="add-task-btn" onClick={() => props.onAddNewTaskClick()}>Add new task</button>
            </div>  
            <div className="tasks-of-project">
@@ -42,5 +42,7 @@ ProjectAdminView.propTypes = {
     onAddNewTaskClick: PropTypes.func,
     taskList: PropTypes.array,
     onTaskSelection: PropTypes.func,
-    loglist: PropTypes.array
+    loglist: PropTypes.array,
+    onDeleteProject: PropTypes.func,
+    onEditProject:PropTypes.func
 }
