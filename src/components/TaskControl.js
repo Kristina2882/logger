@@ -17,6 +17,7 @@ import HeaderSignIn from './HeaderSignIn.js';
 import UserProfile from './UserProfile.js';
 import NewProjectForm from './NewProjectForm.js';
 import ProjectAdminView from './ProjectAdminView.js';
+import EditProjectForm from './EditProjectForm.js';
 
 function TaskControl() {
   const [showForm, setShowForm] = useState(false);
@@ -35,6 +36,7 @@ function TaskControl() {
   const [projectList, setProjectList] = useState([]);
   const [showNewProjectForm, setShowNewProjectForm] = useState(false);
   const [selectedProject, setSelectedProject] = useState(null);
+  const [showEditProject, setShowEditProject] = useState(false);
 
   useEffect(() => {
    function updateLogElapsedWaitTime() {
@@ -290,7 +292,16 @@ const handleDeleteProject = async (id) => {
 }
 
 const handleEditProjectClick = () => {
-  console.log("Project edit reached!");
+  setShowEditProject(true)
+}
+
+const handleEditProject = async (projectToEdit) => {
+  console.log("Project edit reached by form!");
+  console.log(selectedProject);
+  const projectRef = doc(db, 'projects', projectToEdit.id);
+  await updateDoc(projectRef, projectToEdit);
+  setSelectedProject(null);
+  setShowEditProject(false);
 }
 
 if (!activeUser) {
@@ -319,7 +330,12 @@ else if (activeUser) {
 
     if (auth.currentUser.email === 'admin@11.com') {
 
-      if (selectedProject != null) {
+      if (showEditProject) {
+        currentlyVisible = <EditProjectForm project={selectedProject} onEditingProject={handleEditProject}/>
+        buttonText='< Home';
+      }
+
+      else if (selectedProject != null) {
         currentlyVisible= <ProjectAdminView project={selectedProject} onAddNewTaskClick={handleAddTaskInProjectClick} taskList={mainTaskList}
         onTaskSelection={handleChangeSelectedTask} loglist={logs} onDeleteProject={handleDeleteProject} onEditProject = {handleEditProjectClick} />
         buttonText='< Home';
