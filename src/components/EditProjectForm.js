@@ -21,22 +21,22 @@ export default function EditProjectForm(props) {
              <input
              name='projectName'
              type='text'
-             placeholder={props.project.name}
+             defaultValue={props.project.name}
              />
              <input
              name='projectDescr'
              type='text'
-             placeholder={props.project.projectDescr}
+             defaultValue={props.project.projectDescr}
              />
                <input
              name='projectStartDate'
              type='date'
-             placeholder={props.project.startDate}
+             defaultValue={props.project.startDate}
              />
               <input
              name='projectDeadLine'
              type='date'
-             placeholder={props.project.deadLine}
+             defaultValue={props.project.deadLine}
              />
              <button type='submit' className='edit-project-btn'>Save changes</button>
             </form>
