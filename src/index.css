@@ -176,7 +176,8 @@ body {
 .reusable-form select,
 .reusable-form option,
 .log-form input,
-.new-project-form{
+.new-project-form,
+.edit-project-form{
   display: block;
 }
 
@@ -187,7 +188,8 @@ body {
 .sign-form input,
 .filter-form select,
 .filter-form option,
-.new-project-form input {
+.new-project-form input,
+.edit-project-form input {
   margin-bottom: 10px;
   border-radius: 9px;
   padding: 10px;
@@ -207,7 +209,8 @@ body {
   margin-top: 15px;
 }
 
-.new-project-form input  {
+.new-project-form input,
+.edit-project-form input  {
   width: 100%;
   display: block;
 }

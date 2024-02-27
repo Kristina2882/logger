@@ -189,8 +189,8 @@ function TaskControl() {
         setSelectedProject(null);
     }
     else if (selectedProject != null) {
-      setSelectedProject(null);
       setShowForm(false);
+      setSelectedProject(null);
     }
     else if (selectedUser != null) {
       setSelectedUser(null);
@@ -200,6 +200,9 @@ function TaskControl() {
     }
     else if (showNewProjectForm) {
       setShowNewProjectForm(false);
+    }
+    else if (showEditProject) {
+      setShowEditProject(false);
     }
     else  {
       setShowForm(!showForm);
@@ -300,8 +303,8 @@ const handleEditProject = async (projectToEdit) => {
   console.log(selectedProject);
   const projectRef = doc(db, 'projects', projectToEdit.id);
   await updateDoc(projectRef, projectToEdit);
-  setSelectedProject(null);
   setShowEditProject(false);
+  setSelectedProject(projectToEdit);
 }
 
 if (!activeUser) {
@@ -332,7 +335,7 @@ else if (activeUser) {
 
       if (showEditProject) {
         currentlyVisible = <EditProjectForm project={selectedProject} onEditingProject={handleEditProject}/>
-        buttonText='< Home';
+        buttonVisible = false;
       }
 
       else if (selectedProject != null) {
