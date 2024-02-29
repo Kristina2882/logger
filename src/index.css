@@ -297,6 +297,8 @@ body {
 
 }
 
+
+
 .admin-user-list ul.user-list {
   list-style: none;
 }
@@ -310,10 +312,25 @@ body {
   padding-top: 15px;
 }
 
-.task-in-list-gen {
+.task-in-list-gen,
+.project-in-list-gen {
   position: relative;
   display: flex;
   flex-direction: row;
+}
+
+.admin-tasks { 
+  position: relative;
+  left: 70px;
+  right: 0px;
+  width: 45%;
+}
+
+.projects-list {
+  position: relative;
+  left: 0px;
+  right: 20px;
+  width: 25%;
 }
 
 .task-in-list-gen .counter-div {
@@ -322,6 +339,12 @@ body {
   top:8px;
   right: 25px;
   position: absolute;
+}
+
+.project-in-list-gen .counter-div {
+  float:right;
+  position: relative;
+  right: 0px;
 }
 
 .task-in-list-gen .counter,
@@ -343,6 +366,12 @@ body {
 .task-in-list-gen,
 .project-in-list-gen {
   display: block;
+}
+
+.project-in-list {
+  overflow: hidden;
+  width: 70%;
+  
 }
 
 .user-tasks,
