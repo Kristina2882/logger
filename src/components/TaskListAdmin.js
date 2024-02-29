@@ -30,6 +30,7 @@ export default function TaskListAdmin(props) {
       </div>
       <div className="admin-tasks">
       <h2>All Tasks</h2>
+      <div className="filter-form-div">
       <form className="filter-form" onSubmit={filterByResponsible}>
         <select name="filterUser">
          {props.userList.map((user) => (
@@ -49,6 +50,7 @@ export default function TaskListAdmin(props) {
           loglist={props.loglist}
         />
         ))}
+        </div>
         </div>
          <div className="admin-user-list">
           <h2>All users</h2> 

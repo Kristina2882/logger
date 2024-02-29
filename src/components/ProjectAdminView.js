@@ -10,7 +10,9 @@ export default function ProjectAdminView(props) {
         <React.Fragment>
             <div className="project">
             <div className="project-info">  
-           <h2>{project.name}</h2>
+          <div className="project-name">
+          <h2>{project.name}</h2>
+            </div> 
            <h3>{project.projectDescr}</h3>
            <h3>Start date: {project.startDate}</h3> 
            <h3>Project deadline: {project.deadLine}</h3> 
