@@ -48,6 +48,7 @@ export default function TaskListAdmin(props) {
           key={task.id}
           onTaskClick={props.onTaskSelection}
           loglist={props.loglist}
+          projects={props.projects}
         />
         ))}
         </div>

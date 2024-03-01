@@ -15,13 +15,16 @@ export default function TaskInList(props) {
     logUpd = ''
   }
 
+  const thisTaskProject = props.projects.filter(project => project.id === props.task.taskProject)[0];
+  console.log(thisTaskProject);
+
   return (
     <React.Fragment>
     <div className='task-in-list-gen' onClick={() => props.onTaskClick(props.task.id)} >
     <div className='task-in-list'>
     <h3>{props.task.name}</h3>
     <h5><em>Responsible: </em>{props.task.taskResponsible}</h5>
-    <h5><em>Project:</em> {props.task.taskProject}</h5>
+    <h5><em>Project:</em> {thisTaskProject.name}</h5>
     <h5><em>Created on: </em>{props.task.taskCreated}</h5>
     <h5><em>Deadline: </em>{props.task.taskDeadline}</h5>
     <h5><em>Log updated: </em>{logUpd} </h5>
@@ -37,5 +40,6 @@ export default function TaskInList(props) {
 TaskInList.propTypes = {
     task: PropTypes.object,
     onTaskClick: PropTypes.func,
-    loglist: PropTypes.array
+    loglist: PropTypes.array,
+    projects: PropTypes.array
 }
