@@ -101,7 +101,7 @@ body {
 .task-in-list-gen:hover,
 .user-in-list:hover,
 .project-in-list-gen:hover {
-  transform: scale(1.1);
+  transform: scale(1.05);
   color: #c27181;
 }
 
@@ -414,7 +414,7 @@ body {
 
 .project .tasks-of-project {
   position: absolute;
-  width: 50%;
+  width: 60%;
   right: 0px;
   float: right;
   border: 1px solid;
@@ -426,7 +426,7 @@ body {
 }
 
 .project .project-info {
-  width: 50%;
+  width: 40%;
   overflow: hidden;
 }
 .project-info .project-name {
@@ -435,4 +435,8 @@ body {
 
 .main-btn {
   margin-bottom: 15px;
+}
+
+.task h5 {
+  padding-top: 7px;
 }

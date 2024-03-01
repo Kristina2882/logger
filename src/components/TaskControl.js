@@ -340,7 +340,8 @@ else if (activeUser) {
 
       else if (selectedProject != null) {
         currentlyVisible= <ProjectAdminView project={selectedProject} onAddNewTaskClick={handleAddTaskInProjectClick} taskList={mainTaskList}
-        onTaskSelection={handleChangeSelectedTask} loglist={logs} onDeleteProject={handleDeleteProject} onEditProject = {handleEditProjectClick} />
+        onTaskSelection={handleChangeSelectedTask} loglist={logs} onDeleteProject={handleDeleteProject} onEditProject = {handleEditProjectClick} 
+        projects={projectList}/>
         buttonText='< Home';
       }
 
@@ -375,7 +376,8 @@ else if (activeUser) {
       buttonText='Back to tasks';
       }
       else if (selectedTask != null) {
-        currentlyVisible = <Task task={selectedTask} onClickDelete={handleDeleteTask} onClickEdit={handleEditClick} onClickLog={handleLogClick} loglist={logs} onLogDelete={handleLogDelete}/>
+        currentlyVisible = <Task task={selectedTask} onClickDelete={handleDeleteTask} onClickEdit={handleEditClick} onClickLog={handleLogClick} loglist={logs} 
+        onLogDelete={handleLogDelete} projects={projectList}/>
         buttonText='Back to tasks';
       }
    

@@ -16,7 +16,6 @@ export default function TaskInList(props) {
   }
 
   const thisTaskProject = props.projects.filter(project => project.id === props.task.taskProject)[0];
-  console.log(thisTaskProject);
 
   return (
     <React.Fragment>

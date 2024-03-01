@@ -10,6 +10,8 @@ props.loglist.filter(log => log.taskId === task.id).forEach(log => {
   hoursCounter += log.hours;
 });
 
+const thisTaskProject = props.projects.filter(project => project.id === props.task.taskProject)[0];
+console.log(thisTaskProject);
 
   return (
     <React.Fragment>
@@ -17,7 +19,7 @@ props.loglist.filter(log => log.taskId === task.id).forEach(log => {
         <h2>{task.name}</h2>
         <h3><em>{task.description}</em></h3>
         <h4>Responsible: {task.taskResponsible}</h4>
-        <h5>Project: {task.taskProject}</h5>
+        <h5>Project: {thisTaskProject.name}</h5>
         <h5>Created on: {task.taskCreated} Deadline: {task.taskDeadline}</h5>
         
         <h5>Total hours: {hoursCounter} </h5>
@@ -39,5 +41,6 @@ Task.propTypes = {
     onClickEdit: PropTypes.func,
     onClickLog: PropTypes.func,
     loglist: PropTypes.array, 
-    onLogDelete: PropTypes.func
+    onLogDelete: PropTypes.func,
+    projects: PropTypes.array
 }

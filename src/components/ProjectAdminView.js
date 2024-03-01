@@ -29,6 +29,7 @@ export default function ProjectAdminView(props) {
                     key={task.id}
                     onTaskClick={props.onTaskSelection}
                     loglist={props.loglist}
+                    projects={props.projects}
                   />
                 ))
             }
@@ -46,5 +47,6 @@ ProjectAdminView.propTypes = {
     onTaskSelection: PropTypes.func,
     loglist: PropTypes.array,
     onDeleteProject: PropTypes.func,
-    onEditProject:PropTypes.func
+    onEditProject:PropTypes.func,
+    projects: PropTypes.array
 }
