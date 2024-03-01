@@ -347,7 +347,7 @@ else if (activeUser) {
 
       else if (showNewProjectForm) {
         currentlyVisible= <NewProjectForm onNewProjectCreation={handleAddingNewProject}/>
-        buttonText='Back to tasks';
+        buttonText='< Home';
       }
      
      else if (showProfile) {
@@ -373,12 +373,12 @@ else if (activeUser) {
       }
       else if (logging) {
       currentlyVisible= <LogForm task={selectedTask} onAddLog={handleAddLog} userName={auth.currentUser.email}/>
-      buttonText='Back to tasks';
+      buttonText='< Home';
       }
       else if (selectedTask != null) {
         currentlyVisible = <Task task={selectedTask} onClickDelete={handleDeleteTask} onClickEdit={handleEditClick} onClickLog={handleLogClick} loglist={logs} 
         onLogDelete={handleLogDelete} projects={projectList}/>
-        buttonText='Back to tasks';
+        buttonText='< Home';
       }
    
       else {
@@ -404,11 +404,11 @@ else if (activeUser) {
       }
       else if (logging) {
       currentlyVisible= <LogForm task={selectedTask} onAddLog={handleAddLog} userName={auth.currentUser.email}/>
-      buttonText='Back to tasks';
+      buttonText='< Home';
       }
       else if (selectedTask != null) {
         currentlyVisible = <UserTaskView task={selectedTask} onClickLog={handleLogClick} loglist={logs} onLogDelete={handleLogDelete}/>
-        buttonText='Back to tasks';
+        buttonText='< Home';
       }
    
       else {
