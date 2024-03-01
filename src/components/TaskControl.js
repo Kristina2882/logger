@@ -18,6 +18,7 @@ import UserProfile from './UserProfile.js';
 import NewProjectForm from './NewProjectForm.js';
 import ProjectAdminView from './ProjectAdminView.js';
 import EditProjectForm from './EditProjectForm.js';
+import ProjectUserView from './ProjectUserView.js';
 
 function TaskControl() {
   const [showForm, setShowForm] = useState(false);
@@ -388,9 +389,13 @@ else if (activeUser) {
     }
   }
   else {
-    if (showProfile) {
+    if (selectedProject != null) {
+      currentlyVisible = <ProjectUserView/>
+      buttonText='< Home';
+    }
+   else if (showProfile) {
       currentlyVisible = <UserProfile activeUser={activeUser} userList={userList}/>
-      buttonText='< Home';;
+      buttonText='< Home';
     }
     else if (showSignUp) {
       <SignUp onSignUp={handleSignUp}/>
@@ -414,7 +419,6 @@ else if (activeUser) {
       else {
         currentlyVisible=<TaskList taskList={mainTaskList} onTaskSelection={handleChangeSelectedTask} userName={auth.currentUser.email} loglist={logs} 
         projects = {projectList} onProjectSelection={handleChangeSelectedProject}/>
-        buttonText='Add new task';
         buttonVisible = false;
     }
   }

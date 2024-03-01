@@ -12,14 +12,14 @@ export default function TaskList(props) {
        <div className="projects-list">
         <h2>All Projects</h2>
         {props.projects.map((project) => 
-         (<ProjectInList project={project}/>) 
+         (<ProjectInList project={project}  onProjectClick = {props.onProjectSelection} taskList={props.taskList}/>) 
         )}
       </div>
       <div className='user-tasks'>
       <h2>Tasks for {props.userName}</h2>
     {
         listForUser.map((task) => (
-            <TaskInList task={task} key={task.id} onTaskClick={props.onTaskSelection} loglist={props.loglist}
+            <TaskInList task={task} key={task.id} onTaskClick={props.onTaskSelection} loglist={props.loglist} projects={props.projects}
             />
         ))
     }
