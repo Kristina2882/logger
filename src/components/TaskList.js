@@ -6,6 +6,8 @@ import ProjectInList from './ProjectInList';
 export default function TaskList(props) {
 
   const listForUser = props.taskList.filter(task => task.taskResponsible === props.userName);
+  const userInfo = props.userList.filter(user => user.name === props.userName)[0];
+  console.log(userInfo);
 
   return (
     <React.Fragment>
@@ -21,7 +23,7 @@ export default function TaskList(props) {
           ))}
         </div>
         <div className="user-tasks">
-          <h2>Tasks for {props.userName}</h2>
+          <h2>Tasks for {userInfo.firstName} {userInfo.surname}</h2>
           {listForUser.map((task) => (
             <TaskInList
               task={task}
@@ -43,5 +45,6 @@ TaskList.propTypes = {
     userName: PropTypes.string,
     loglist: PropTypes.array,
     projects: PropTypes.array,
-    onProjectSelection: PropTypes.func
+    onProjectSelection: PropTypes.func,
+    userList: PropTypes.array
 }

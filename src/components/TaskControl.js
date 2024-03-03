@@ -417,7 +417,7 @@ else if (activeUser) {
    
       else {
         currentlyVisible=<TaskList taskList={mainTaskList} onTaskSelection={handleChangeSelectedTask} userName={auth.currentUser.email} loglist={logs} 
-        projects = {projectList} onProjectSelection={handleChangeSelectedProject}/>
+        projects = {projectList} onProjectSelection={handleChangeSelectedProject} userList={userList}/>
         buttonVisible = false;
     }
   }
