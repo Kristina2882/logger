@@ -352,6 +352,10 @@ body {
   position: absolute;
 }
 
+.task-in-list h5 {
+  overflow: hidden;
+}
+
 .project-in-list-gen .counter-div {
   float:right;
   position: relative;
@@ -379,7 +383,8 @@ body {
   display: block;
 }
 
-.project-in-list {
+.project-in-list,
+.task-in-list {
   overflow: hidden;
   width: 70%;
 }

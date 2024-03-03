@@ -412,7 +412,7 @@ else if (activeUser) {
       buttonText='< Home';
       }
       else if (selectedTask != null) {
-        currentlyVisible = <UserTaskView task={selectedTask} onClickLog={handleLogClick} loglist={logs} onLogDelete={handleLogDelete}/>
+        currentlyVisible = <UserTaskView task={selectedTask} onClickLog={handleLogClick} loglist={logs} onLogDelete={handleLogDelete} projects={projectList}/>
         buttonText='< Home';
       }
    
