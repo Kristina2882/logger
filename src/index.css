@@ -64,7 +64,8 @@ body {
   margin: 20px auto;
 
 }
-.admin-main {
+.admin-main,
+.user-main {
   display: flex;
   flex-direction: row;
   justify-content:flex-end;
@@ -383,8 +384,6 @@ body {
   width: 70%;
 }
 
-
-.user-tasks,
 .sign-out {
   display: inline-table;
 }
@@ -439,4 +438,19 @@ body {
 
 .task h5 {
   padding-top: 7px;
+}
+
+.user-main .projects-list {
+  width: 50%;
+  position: relative;
+  left:0px
+
+}
+
+.user-main .user-tasks {
+  left: 90px;
+  right: 0px;
+  top: 12px;
+  position: relative;
+  float: right;
 }

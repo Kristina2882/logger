@@ -9,24 +9,32 @@ export default function TaskList(props) {
 
   return (
     <React.Fragment>
-       <div className="projects-list">
-        <h2>All Projects</h2>
-        {props.projects.map((project) => 
-         (<ProjectInList project={project}  onProjectClick = {props.onProjectSelection} taskList={props.taskList}/>) 
-        )}
-      </div>
-      <div className='user-tasks'>
-      <h2>Tasks for {props.userName}</h2>
-    {
-        listForUser.map((task) => (
-            <TaskInList task={task} key={task.id} onTaskClick={props.onTaskSelection} loglist={props.loglist} projects={props.projects}
+      <div className="user-main">
+        <div className="projects-list">
+          <h2>All Projects</h2>
+          {props.projects.map((project) => (
+            <ProjectInList
+              project={project}
+              onProjectClick={props.onProjectSelection}
+              taskList={props.taskList}
             />
-        ))
-    }
-    </div>
+          ))}
+        </div>
+        <div className="user-tasks">
+          <h2>Tasks for {props.userName}</h2>
+          {listForUser.map((task) => (
+            <TaskInList
+              task={task}
+              key={task.id}
+              onTaskClick={props.onTaskSelection}
+              loglist={props.loglist}
+              projects={props.projects}
+            />
+          ))}
+        </div>
+      </div>
     </React.Fragment>
-    
-  )
+  );
 }
 
 TaskList.propTypes = {
