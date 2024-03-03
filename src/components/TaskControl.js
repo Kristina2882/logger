@@ -236,7 +236,6 @@ const handleLogDelete = async (id) => {
 const handleSignIn = () => {
  setShowSignIn(false);
  setActiveUser(auth.currentUser.email);
- console.log(activeUser);
 }
 
 const handleSignOut = () => {
