@@ -390,7 +390,7 @@ else if (activeUser) {
   }
   else {
     if (selectedProject != null) {
-      currentlyVisible = <ProjectUserView/>
+      currentlyVisible = <ProjectUserView project={selectedProject}/>
       buttonText='< Home';
     }
    else if (showProfile) {

@@ -224,14 +224,16 @@ body {
 }
 .task h2,
 .user-profile h2,
-.project h2 {
+.project h2,
+.user-project-info h2 {
 
  margin-bottom: 20px;
  font-size: 24px;
 }
 .task h3,
 .user-profile h3,
-.project h3 {
+.project h3,
+.user-project-info h3 {
   margin: 10px 0px;
   font-size: 20px;
   margin-bottom: 15px;
@@ -433,7 +435,13 @@ body {
   width: 40%;
   overflow: hidden;
 }
-.project-info .project-name {
+
+.user-project-info  {
+  width: 80%;
+  overflow: hidden;
+}
+.project-info .project-name,
+.user-project-info .user-project-name {
   width: 80%;
 }
 
