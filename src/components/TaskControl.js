@@ -313,6 +313,12 @@ const handleAdminButtonClick = () => {
  selectedUser.status = "admin";
 }
 
+const handleRegularButtonClick = () => {
+  const newAdmins = admins.filter(admin => admin !== selectedUser.name);
+  setAdmins(newAdmins);
+  selectedUser.status = 'regular';
+}
+
 if (!activeUser) {
 
   let currentUnsigned = null;
@@ -362,7 +368,7 @@ else if (activeUser) {
       }
 
      else if (selectedUser != null) {
-        currentlyVisible=<AdminUserView userProfile={selectedUser} adminButtonClick={handleAdminButtonClick}/>
+        currentlyVisible=<AdminUserView userProfile={selectedUser} adminButtonClick={handleAdminButtonClick} regularButtonClick = {handleRegularButtonClick}/>
         buttonText='< Home';
       }
       else if (editing) {

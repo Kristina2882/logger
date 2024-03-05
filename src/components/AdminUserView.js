@@ -10,6 +10,7 @@ export default function AdminUserView(props) {
         <h3><em>D.O.B: </em> {props.userProfile.dob}</h3>
         <h3>Status: {props.userProfile.status}</h3>
         <button className="make-admin-btn" onClick={() => props.adminButtonClick()}>Make admin</button>
+        <button className="make-regular-btn" onClick={() => props.regularButtonClick()}>Make admin</button>
         </div>
       </React.Fragment>
     );
@@ -17,5 +18,6 @@ export default function AdminUserView(props) {
 
 AdminUserView.propTypes = {
     userProfile: PropTypes.object,
-    adminButtonClick: PropTypes.func
+    adminButtonClick: PropTypes.func,
+    regularButtonClick: PropTypes.func
 }
