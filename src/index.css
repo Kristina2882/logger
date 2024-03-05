@@ -118,7 +118,9 @@ body {
 .btn-filter-form,
 .add-project,
 .add-project-btn,
-.add-task-btn
+.add-task-btn,
+.make-regular-btn,
+.make-admin-btn
  {
   display: block;
   background: #d594a1;
@@ -131,8 +133,15 @@ body {
   transition: background transform 500ms ease;
 }
 
-.btn-filter-form {
+.btn-filter-form,
+.make-regular-btn,
+.make-admin-btn {
   display: inline;
+}
+
+.make-regular-btn,
+.make-admin-btn {
+  margin-right: 10px;
 }
 
 .edit-btn,
@@ -148,7 +157,8 @@ body {
 }
 
 .delete-btn,
-.delete-project-btn {
+.delete-project-btn,
+.make-admin-btn {
   background: rgb(255, 13, 49);
   color: antiquewhite;
 }
@@ -165,7 +175,9 @@ body {
 .add-project-btn:hover,
 .add-task-btn:hover,
 .delete-project-btn:hover,
-.edit-project-btn:hover  {
+.edit-project-btn:hover,
+.make-regular-btn:hover,
+.make-admin-btn:hover  {
   transform: scale(1.1);
   background: #c27181;
   color: #261216;
