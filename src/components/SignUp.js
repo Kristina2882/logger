@@ -13,11 +13,12 @@ export default function SignUp(props) {
         const firstName = event.target.firstName.value;
         const surname = event.target.surname.value;
         const dob = event.target.dob.value;
+        const status = "regular";
       
         createUserWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
          setSignUpSuccess(`You have successfully signed up, ${userCredential.user.email}!`);
-         props.onSignUp( {name: email, firstName: firstName, surname: surname, dob: dob});
+         props.onSignUp( {name: email, firstName: firstName, surname: surname, dob: dob, status: status});
 
         })
         .catch((error) => {

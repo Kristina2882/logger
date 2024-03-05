@@ -38,6 +38,7 @@ function TaskControl() {
   const [showNewProjectForm, setShowNewProjectForm] = useState(false);
   const [selectedProject, setSelectedProject] = useState(null);
   const [showEditProject, setShowEditProject] = useState(false);
+  const [admins, setAdmins] = useState(['admin@11.com']);
 
   useEffect(() => {
    function updateLogElapsedWaitTime() {
@@ -68,6 +69,7 @@ function TaskControl() {
             firstName: doc.data().firstName,
             surname: doc.data().surname,
             dob: doc.data().dob,
+            status: doc.data().status,
             id: doc.id
           })
         });
@@ -299,12 +301,16 @@ const handleEditProjectClick = () => {
 }
 
 const handleEditProject = async (projectToEdit) => {
-  console.log("Project edit reached by form!");
-  console.log(selectedProject);
   const projectRef = doc(db, 'projects', projectToEdit.id);
   await updateDoc(projectRef, projectToEdit);
   setShowEditProject(false);
   setSelectedProject(projectToEdit);
+}
+
+const handleAdminButtonClick = () => {
+ const newAdmins = admins.concat(selectedUser.name);
+ setAdmins(newAdmins);
+ selectedUser.status = "admin";
 }
 
 if (!activeUser) {
@@ -331,7 +337,7 @@ else if (activeUser) {
     let buttonText = null;
     let buttonVisible = true;
 
-    if (auth.currentUser.email === 'admin@11.com') {
+    if (admins.includes(auth.currentUser.email)) {
 
       if (showEditProject) {
         currentlyVisible = <EditProjectForm project={selectedProject} onEditingProject={handleEditProject}/>
@@ -356,7 +362,7 @@ else if (activeUser) {
       }
 
      else if (selectedUser != null) {
-        currentlyVisible=<AdminUserView userProfile={selectedUser}/>
+        currentlyVisible=<AdminUserView userProfile={selectedUser} adminButtonClick={handleAdminButtonClick}/>
         buttonText='< Home';
       }
       else if (editing) {
