@@ -19,7 +19,7 @@ export default function HeaderSignIn(props) {
         {user.firstName} {user.surname}
           </li>
           <li>
-          Theme
+          <button onClick={props.toggleTheme}>Theme</button>
           </li>
           <li>
             <SignOut onSignOut={() => props.onSignOut()}/>
@@ -33,5 +33,6 @@ export default function HeaderSignIn(props) {
     onSignOut: PropTypes.func,
     activeUser: PropTypes.string,
     userList: PropTypes.array,
-    onNameClick: PropTypes.func
+    onNameClick: PropTypes.func,
+    toggleTheme: PropTypes.func
   }

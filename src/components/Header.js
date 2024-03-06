@@ -1,7 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 
-export default function Header() {
+export default function Header(props) {
 
     return (
       <div className='header'>
@@ -11,9 +12,13 @@ export default function Header() {
        
         <ul className='nav'>
           <li>
-          Theme
+          <button onClick={props.toggleTheme}>Theme</button>
           </li>
         </ul>
       </div>
     )
+  }
+
+  Header.propTypes = {
+    toggleTheme: PropTypes.func
   }

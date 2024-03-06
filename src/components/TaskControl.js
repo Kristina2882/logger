@@ -19,8 +19,9 @@ import NewProjectForm from './NewProjectForm.js';
 import ProjectAdminView from './ProjectAdminView.js';
 import EditProjectForm from './EditProjectForm.js';
 import ProjectUserView from './ProjectUserView.js';
+import PropTypes from 'prop-types';
 
-function TaskControl() {
+function TaskControl(props) {
   const [showForm, setShowForm] = useState(false);
   const [mainTaskList, setMainTaskList] = useState([]);
   const [selectedTask, setSelectedTask] = useState(null);
@@ -332,7 +333,7 @@ if (!activeUser) {
 
   return (
     <React.Fragment>
-      <Header/>
+      <Header toggleTheme={props.toggleTheme}/>
      <h2>Please sign in to access the logger.</h2>
      {currentUnsigned}
     </React.Fragment>
@@ -435,7 +436,7 @@ else if (activeUser) {
   }
     return (
       <React.Fragment>
-        <HeaderSignIn onSignOut={handleSignOut} activeUser={activeUser} userList={userList} onNameClick={handleShowProfile}/>
+        <HeaderSignIn onSignOut={handleSignOut} activeUser={activeUser} userList={userList} onNameClick={handleShowProfile} toggleTheme={props.toggleTheme}/>
         {(error || !buttonVisible) ? null : <button className='main-btn' onClick={handleClick}>{buttonText}</button>}
         {currentlyVisible}
       </React.Fragment>
@@ -443,5 +444,8 @@ else if (activeUser) {
 }
 }
   
+TaskControl.propTypes = {
+  toggleTheme: PropTypes.func
+}
 
 export default TaskControl;
