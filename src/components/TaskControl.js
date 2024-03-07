@@ -41,6 +41,11 @@ function TaskControl(props) {
   const [showEditProject, setShowEditProject] = useState(false);
   const [admins, setAdmins] = useState(['admin@11.com']);
 
+  const styles = { 
+    backgroundColor: props.theme.buttonBackground, 
+    color: props.theme.textColor 
+  }
+
   useEffect(() => {
    function updateLogElapsedWaitTime() {
     const newLogs = logs.map((log) => {
@@ -333,7 +338,7 @@ if (!activeUser) {
 
   return (
     <React.Fragment>
-      <Header toggleTheme={props.toggleTheme}/>
+      <Header toggleTheme={props.toggleTheme} theme={props.theme}/>
      <h2>Please sign in to access the logger.</h2>
      {currentUnsigned}
     </React.Fragment>
@@ -436,8 +441,8 @@ else if (activeUser) {
   }
     return (
       <React.Fragment>
-        <HeaderSignIn onSignOut={handleSignOut} activeUser={activeUser} userList={userList} onNameClick={handleShowProfile} toggleTheme={props.toggleTheme}/>
-        {(error || !buttonVisible) ? null : <button className='main-btn' onClick={handleClick}>{buttonText}</button>}
+        <HeaderSignIn onSignOut={handleSignOut} activeUser={activeUser} userList={userList} onNameClick={handleShowProfile} toggleTheme={props.toggleTheme} theme={props.theme}/>
+        {(error || !buttonVisible) ? null : <button className='main-btn' onClick={handleClick} style={styles} >{buttonText}</button>}
         {currentlyVisible}
       </React.Fragment>
     );
@@ -445,7 +450,8 @@ else if (activeUser) {
 }
   
 TaskControl.propTypes = {
-  toggleTheme: PropTypes.func
+  toggleTheme: PropTypes.func,
+  theme: PropTypes.object
 }
 
 export default TaskControl;

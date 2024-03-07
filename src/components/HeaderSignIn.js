@@ -8,6 +8,10 @@ export default function HeaderSignIn(props) {
    const userName = props.activeUser;
    const user = props.userList.filter(user => user.name === userName)[0];
 
+   const styles = { 
+    backgroundColor: props.theme.buttonBackground, 
+    color: props.theme.textColor 
+  }
     return (
       <div className='header'>
         <span className='header-title'>
@@ -19,7 +23,9 @@ export default function HeaderSignIn(props) {
         {user.firstName} {user.surname}
           </li>
           <li>
-          <button onClick={props.toggleTheme}>Theme</button>
+          <button className='toggle-theme'  onClick={props.toggleTheme} style={styles}>
+          {props.theme.textColor === "#e5bcc4" ? "toggle light theme" : "toggle dark theme"}
+          </button>
           </li>
           <li>
             <SignOut onSignOut={() => props.onSignOut()}/>
@@ -34,5 +40,6 @@ export default function HeaderSignIn(props) {
     activeUser: PropTypes.string,
     userList: PropTypes.array,
     onNameClick: PropTypes.func,
-    toggleTheme: PropTypes.func
+    toggleTheme: PropTypes.func,
+    theme: PropTypes.object
   }

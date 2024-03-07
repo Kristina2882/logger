@@ -4,6 +4,11 @@ import PropTypes from 'prop-types';
 
 export default function Header(props) {
 
+  const styles = { 
+    backgroundColor: props.theme.buttonBackground, 
+    color: props.theme.textColor 
+  }
+
     return (
       <div className='header'>
         <span className='header-title'>
@@ -12,7 +17,9 @@ export default function Header(props) {
        
         <ul className='nav'>
           <li>
-          <button onClick={props.toggleTheme}>Theme</button>
+          <button className='toggle-theme' onClick={props.toggleTheme} style={styles}>
+          {props.theme.textColor === "#e5bcc4" ? "toggle light theme" : "toggle dark theme"}
+          </button>
           </li>
         </ul>
       </div>
@@ -20,5 +27,6 @@ export default function Header(props) {
   }
 
   Header.propTypes = {
-    toggleTheme: PropTypes.func
+    toggleTheme: PropTypes.func,
+    theme: PropTypes.object
   }

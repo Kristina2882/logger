@@ -17,7 +17,9 @@ function App() {
     <ThemeContext.Provider value={theme}>
     <React.Fragment>
       <div className="main">
-        <TaskControl toggleTheme = {toggleTheme}/>
+        <ThemeContext.Consumer>
+        {contextTheme => <TaskControl toggleTheme = {toggleTheme} theme={contextTheme}/>}
+        </ThemeContext.Consumer>
       </div>
     </React.Fragment>
     </ThemeContext.Provider>

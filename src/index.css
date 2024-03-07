@@ -120,7 +120,8 @@ body {
 .add-project-btn,
 .add-task-btn,
 .make-regular-btn,
-.make-admin-btn
+.make-admin-btn,
+.toggle-theme
  {
   display: block;
   background: #d594a1;
@@ -177,10 +178,15 @@ body {
 .delete-project-btn:hover,
 .edit-project-btn:hover,
 .make-regular-btn:hover,
-.make-admin-btn:hover  {
+.make-admin-btn:hover,
+.toggle-theme:hover  {
   transform: scale(1.1);
   background: #c27181;
   color: #261216;
+}
+
+.toggle-theme{
+  display: inline;
 }
 
 .reusable-form,
