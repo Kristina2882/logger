@@ -6,7 +6,7 @@ export default function Header(props) {
 
   const styles = { 
     backgroundColor: props.theme.buttonBackground, 
-    color: props.theme.textColor 
+    color: props.theme.buttonTextColor
   }
 
     return (

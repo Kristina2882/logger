@@ -10,7 +10,7 @@ export default function HeaderSignIn(props) {
 
    const styles = { 
     backgroundColor: props.theme.buttonBackground, 
-    color: props.theme.textColor 
+    color: props.theme.buttonTextColor
   }
     return (
       <div className='header'>
