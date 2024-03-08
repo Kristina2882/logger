@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { GiUbisoftSun } from "react-icons/gi";
+import { GiEvilMoon } from "react-icons/gi";
 
 
 export default function Header(props) {
@@ -18,7 +20,7 @@ export default function Header(props) {
         <ul className='nav'>
           <li>
           <button className='toggle-theme' onClick={props.toggleTheme} style={styles}>
-          {props.theme.textColor === "#e5bcc4" ? "toggle light theme" : "toggle dark theme"}
+          {props.theme.textColor === "#e5bcc4" ? <GiUbisoftSun /> : <GiEvilMoon />}
           </button>
           </li>
         </ul>
