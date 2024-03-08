@@ -6,10 +6,8 @@
 }
 
 body {
-  background: #0f0f0f;
   font-family: 'Work Sans', sans-serif;
   font-size: 20px;
-  color: #e5bcc4;
   margin-top: 20px;
 }
 .header  {
@@ -44,7 +42,6 @@ body {
 }
 
 .menu-link {
-  color: #e5bcc4;
   text-decoration: none;
   display: inline;
 }
@@ -62,8 +59,8 @@ body {
   width: 1600px;
   height: 100%;
   margin: 20px auto;
-
 }
+
 .admin-main,
 .user-main {
   display: flex;

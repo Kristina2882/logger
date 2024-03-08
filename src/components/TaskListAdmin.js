@@ -1,10 +1,16 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import TaskInList from "./TaskInList";
 import PropTypes from "prop-types";
 import UserInList from "./UserInList";
 import ProjectInList from "./ProjectInList";
+import { ThemeContext } from "../theme-context";
 
 export default function TaskListAdmin(props) {
+  const theme = useContext(ThemeContext);
+
+  const selectStyle = {
+    backgroundColor: theme.inputBackground
+  }
   const [taskList, setTaskList] = useState(props.taskList);
 
   function filterByResponsible(event) {
@@ -32,7 +38,7 @@ export default function TaskListAdmin(props) {
       <h2>All Tasks</h2>
       <div className="filter-form-div">
       <form className="filter-form" onSubmit={filterByResponsible}>
-        <select name="filterUser">
+        <select name="filterUser" style={selectStyle}>
          {props.userList.map((user) => (
           <option value={user.name}>{user.name}</option>
 

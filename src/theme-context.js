@@ -6,7 +6,7 @@ export const themes = {
     textColor:  "#0f0f0f",
     buttonBackground: "#d594a1",
     buttonTextColor: "#0f0f0f", 
-    inputBackground: "#d594a1"
+    inputBackground: " #c27181"
   },
   dark: {
     backgroundColor: "#0f0f0f",

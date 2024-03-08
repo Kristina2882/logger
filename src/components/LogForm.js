@@ -1,8 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import {serverTimestamp} from 'firebase/firestore';
+import { ThemeContext } from '../theme-context';
 
 export default function LogForm(props) {
+  const theme = useContext(ThemeContext);
+
+  const inputStyles = {
+    backgroundColor: theme.inputBackground
+  }
   const {task} = props
 
   function logSubmission(event) {
@@ -21,16 +27,19 @@ export default function LogForm(props) {
         <input name="userName"
                 type='text'
                 placeholder= {props.userName} readOnly
+                style={inputStyles}
          />
 
          <input name="work"
                 type='text'
                 placeholder='Describe your work'
+                style={inputStyles}
          />
          <input
          name="hours"
          type='number'
          placeholder='How much time did you spent?'
+         style={inputStyles}
          />
          <button type='submit' className='log-btn'>Log hours</button>
         </form>

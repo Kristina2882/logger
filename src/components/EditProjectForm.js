@@ -1,7 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import PropTypes from 'prop-types';
+import { ThemeContext } from "../theme-context";
 
 export default function EditProjectForm(props) {
+
+    const theme = useContext(ThemeContext);
+
+  const inputStyles = { 
+    backgroundColor: theme.inputBackground
+  }
 
     function editProjectSubmission(event)  {
         event.preventDefault();
@@ -22,21 +29,25 @@ export default function EditProjectForm(props) {
              name='projectName'
              type='text'
              defaultValue={props.project.name}
+             style={inputStyles}
              />
              <input
              name='projectDescr'
              type='text'
              defaultValue={props.project.projectDescr}
+             style={inputStyles}
              />
                <input
              name='projectStartDate'
              type='date'
              defaultValue={props.project.startDate}
+             style={inputStyles}
              />
               <input
              name='projectDeadLine'
              type='date'
              defaultValue={props.project.deadLine}
+             style={inputStyles}
              />
              <button type='submit' className='edit-project-btn'>Save changes</button>
             </form>
