@@ -1,7 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
+import { ThemeContext } from '../theme-context';
 
 export default function NewProjectForm(props) {
+
+    const theme = useContext(ThemeContext);
+
+    const inputStyle = {
+        backgroundColor: theme.inputBackground
+    }
 
     function handleNewProjectSubmission(event) {
         event.preventDefault();
@@ -22,21 +29,25 @@ export default function NewProjectForm(props) {
              name='projectName'
              type='text'
              placeholder='Enter project name'
+             style={inputStyle}
              />
              <input
              name='projectDescr'
              type='text'
              placeholder='Enter project description'
+             style={inputStyle}
              />
                <input
              name='projectStartDate'
              type='date'
              placeholder='Enter project start date'
+             style={inputStyle}
              />
               <input
              name='projectDeadLine'
              type='date'
              placeholder='Enter project deadline'
+             style={inputStyle}
              />
              <button type='submit' className='add-project-btn'>Add project</button>
             </form>
