@@ -275,7 +275,7 @@ body {
 
 .log-general:hover,
 .filter-form select:hover {
-  background:  #c27181;
+  transform: scale(1.05);
 }
 .logged,
 .log-hours

@@ -1,6 +1,8 @@
 import React from 'react';
 import SignOut from './SignOut';
 import PropTypes from 'prop-types';
+import { GiUbisoftSun } from "react-icons/gi";
+import { GiEvilMoon } from "react-icons/gi";
 
 
 export default function HeaderSignIn(props) {
@@ -24,7 +26,7 @@ export default function HeaderSignIn(props) {
           </li>
           <li>
           <button className='toggle-theme'  onClick={props.toggleTheme} style={styles}>
-          {props.theme.textColor === "#e5bcc4" ? "toggle light theme" : "toggle dark theme"}
+          {props.theme.textColor === "#e5bcc4" ? <GiUbisoftSun /> : <GiEvilMoon />}
           </button>
           </li>
           <li>
