@@ -1,10 +1,17 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import { auth } from '../firebase';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import PropTypes from 'prop-types';
+import { ThemeContext } from '../theme-context';
 
 export default function SignUp(props) {
     const [signUpSuccess, setSignUpSuccess] = useState(null);
+
+    const theme = useContext(ThemeContext);
+
+    const inputStyle = {
+        backgroundColor: theme.inputBackground
+    }
 
     function doSignUp(event) {
         event.preventDefault();
@@ -37,26 +44,31 @@ export default function SignUp(props) {
             name="email"
             type="email"
             placeholder="Enter your email"
+            style={inputStyle}
             />
              <input
             name="password"
             type="password"
             placeholder="Enter your password"
+            style={inputStyle}
             />
              <input
             name="firstName"
             type="text"
             placeholder="Enter your first name"
+            style={inputStyle}
             />
              <input
             name="surname"
             type="text"
             placeholder="Enter your surnname"
+            style={inputStyle}
             />
              <input
             name="dob"
             type="date"
             placeholder="Select your date of birth"
+            style={inputStyle}
             />
 
             <button type="submit" className="sign-btn">Sign Up!</button>

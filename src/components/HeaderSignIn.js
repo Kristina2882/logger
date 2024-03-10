@@ -3,6 +3,7 @@ import SignOut from './SignOut';
 import PropTypes from 'prop-types';
 import { GiUbisoftSun } from "react-icons/gi";
 import { GiEvilMoon } from "react-icons/gi";
+import { GiFeather } from "react-icons/gi";
 
 
 export default function HeaderSignIn(props) {
@@ -14,23 +15,30 @@ export default function HeaderSignIn(props) {
     backgroundColor: props.theme.buttonBackground, 
     color: props.theme.buttonTextColor
   }
+
+  const logoStyle = {
+    backgroundColor: props.theme.inputBackground,
+    color: props.theme.buttonTextColor
+  }
+
     return (
       <div className='header'>
-        <span className='header-title'>
-        <h3>LOGGER</h3>
-        </span>
+      <div className='header-title'  style={logoStyle}>
+      <h3>LOGGER  <GiFeather className='feather'/> </h3> 
+     
+      </div>
        
         <ul className='nav'>
           <li onClick={() => props.onNameClick()}>
         {user.firstName} {user.surname}
           </li>
           <li>
-          <button className='toggle-theme'  onClick={props.toggleTheme} style={styles}>
-          {props.theme.textColor === "#e5bcc4" ? <GiUbisoftSun /> : <GiEvilMoon />}
-          </button>
+            <SignOut onSignOut={() => props.onSignOut()}/>
           </li>
           <li>
-            <SignOut onSignOut={() => props.onSignOut()}/>
+          <button className='toggle-theme'  onClick={props.toggleTheme} style={styles}>
+          {props.theme.textColor === "#e5bcc4" ? <GiUbisoftSun className='sun' /> : <GiEvilMoon className='moon' />}
+          </button>
           </li>
         </ul>
       </div>

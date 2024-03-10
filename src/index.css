@@ -11,7 +11,6 @@ body {
   margin-top: 20px;
 }
 .header  {
-
   padding-bottom: 20px;
 }
 
@@ -21,6 +20,25 @@ body {
   font-size: 26px;
   display: inline-block;
   margin-bottom: 20px;
+}
+
+.header-title {
+  border-radius: 16px;
+  position: relative;
+  top: 10px;
+  padding-left: 15px;
+  padding-right: 30px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  font-size: 28px;
+}
+
+.feather {
+  display: inline;
+  position: relative;
+  left: 12px;
+  height: 30px;
+  width: 30px;
 }
 
 .header .sign-btn {
@@ -129,6 +147,12 @@ body {
   margin-top: 20px;
   font-size: 18px;
   transition: background transform 500ms ease;
+}
+
+.sun,
+.moon {
+ height: 30px;
+ width: 30px;
 }
 
 .btn-filter-form,
